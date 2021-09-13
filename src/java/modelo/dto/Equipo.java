@@ -1,5 +1,5 @@
 package modelo.dto;
-// Generated 13-09-2021 17:55:00 by Hibernate Tools 4.3.1
+// Generated 13-09-2021 19:04:06 by Hibernate Tools 4.3.1
 
 
 
@@ -9,7 +9,7 @@ package modelo.dto;
 public class Equipo  implements java.io.Serializable {
 
 
-     private Integer idEquipo;
+     private Integer id;
      private Incripcion incripcion;
      private Liga liga;
      private String nombre;
@@ -25,12 +25,12 @@ public class Equipo  implements java.io.Serializable {
        this.cantidadJugador = cantidadJugador;
     }
    
-    public Integer getIdEquipo() {
-        return this.idEquipo;
+    public Integer getId() {
+        return this.id;
     }
     
-    public void setIdEquipo(Integer idEquipo) {
-        this.idEquipo = idEquipo;
+    public void setId(Integer id) {
+        this.id = id;
     }
     public Incripcion getIncripcion() {
         return this.incripcion;

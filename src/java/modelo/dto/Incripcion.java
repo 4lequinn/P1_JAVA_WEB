@@ -1,5 +1,5 @@
 package modelo.dto;
-// Generated 13-09-2021 17:55:00 by Hibernate Tools 4.3.1
+// Generated 13-09-2021 19:04:06 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -12,7 +12,7 @@ import java.util.Set;
 public class Incripcion  implements java.io.Serializable {
 
 
-     private Integer idIncripcion;
+     private Integer id;
      private EstadoSolicitud estadoSolicitud;
      private PerfilJugador perfilJugador;
      private Date fecha;
@@ -34,12 +34,12 @@ public class Incripcion  implements java.io.Serializable {
        this.equipos = equipos;
     }
    
-    public Integer getIdIncripcion() {
-        return this.idIncripcion;
+    public Integer getId() {
+        return this.id;
     }
     
-    public void setIdIncripcion(Integer idIncripcion) {
-        this.idIncripcion = idIncripcion;
+    public void setId(Integer id) {
+        this.id = id;
     }
     public EstadoSolicitud getEstadoSolicitud() {
         return this.estadoSolicitud;

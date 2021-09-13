@@ -93,13 +93,13 @@ public abstract class MetodosModelo <Entidad> {
     public boolean eliminar(int id){
         boolean valida = false;
         try {
-            conectar();
             Entidad entidad = buscar(id);
+            conectar();
             session.delete(entidad);
             confirmarCambios();
             valida = true;
         } catch (Exception ex) {
-            System.out.println("ERROR AL GUARDAR " + ex.getMessage());
+            System.out.println("ERROR AL ELIMINAR " + ex.getMessage());
         }finally{
             desconectar();
         }

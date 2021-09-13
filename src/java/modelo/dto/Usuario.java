@@ -1,5 +1,5 @@
 package modelo.dto;
-// Generated 13-09-2021 17:55:00 by Hibernate Tools 4.3.1
+// Generated 13-09-2021 19:04:06 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -11,7 +11,7 @@ import java.util.Set;
 public class Usuario  implements java.io.Serializable {
 
 
-     private Integer idUsuario;
+     private Integer id;
      private TipoUsuario tipoUsuario;
      private String usuario;
      private String contrasenia;
@@ -20,25 +20,30 @@ public class Usuario  implements java.io.Serializable {
     public Usuario() {
     }
 
+    public Usuario(Integer id) {
+        this.id = id;
+    }
 	
-    public Usuario(TipoUsuario tipoUsuario, String usuario, String contrasenia) {
+    public Usuario(Integer id, TipoUsuario tipoUsuario, String usuario, String contrasenia) {
+        this.id = id;
         this.tipoUsuario = tipoUsuario;
         this.usuario = usuario;
         this.contrasenia = contrasenia;
     }
-    public Usuario(TipoUsuario tipoUsuario, String usuario, String contrasenia, Set perfilJugadors) {
+    public Usuario(Integer id, TipoUsuario tipoUsuario, String usuario, String contrasenia, Set perfilJugadors) {
+       this.id = id;
        this.tipoUsuario = tipoUsuario;
        this.usuario = usuario;
        this.contrasenia = contrasenia;
        this.perfilJugadors = perfilJugadors;
     }
    
-    public Integer getIdUsuario() {
-        return this.idUsuario;
+    public Integer getId() {
+        return this.id;
     }
     
-    public void setIdUsuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setId(Integer id) {
+        this.id = id;
     }
     public TipoUsuario getTipoUsuario() {
         return this.tipoUsuario;

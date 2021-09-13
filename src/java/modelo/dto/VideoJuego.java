@@ -1,5 +1,5 @@
 package modelo.dto;
-// Generated 13-09-2021 17:55:00 by Hibernate Tools 4.3.1
+// Generated 13-09-2021 19:04:06 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -11,7 +11,7 @@ import java.util.Set;
 public class VideoJuego  implements java.io.Serializable {
 
 
-     private Integer idJuego;
+     private Integer id;
      private String nombre;
      private String tipoJuego;
      private Set ligas = new HashSet(0);
@@ -30,12 +30,12 @@ public class VideoJuego  implements java.io.Serializable {
        this.ligas = ligas;
     }
    
-    public Integer getIdJuego() {
-        return this.idJuego;
+    public Integer getId() {
+        return this.id;
     }
     
-    public void setIdJuego(Integer idJuego) {
-        this.idJuego = idJuego;
+    public void setId(Integer id) {
+        this.id = id;
     }
     public String getNombre() {
         return this.nombre;
