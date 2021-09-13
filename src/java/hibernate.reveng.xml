@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
 <!--
 DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
 
@@ -39,22 +39,15 @@ made subject to such option by the copyright holder.
 
 Contributor(s):
 -->
-<hibernate-configuration>
-  <session-factory>
-    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/liga_videojuegos?zeroDateTimeBehavior=convertToNull</property>
-    <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.current_session_context_class">thread</property>
-    <property name="hibernate.hbm2ddl.auto">validate</property>
-    <mapping resource="modelo/dto/TipoUsuario.hbm.xml"/>
-    <mapping resource="modelo/dto/Liga.hbm.xml"/>
-    <mapping resource="modelo/dto/Usuario.hbm.xml"/>
-    <mapping resource="modelo/dto/Incripcion.hbm.xml"/>
-    <mapping resource="modelo/dto/TipoJugador.hbm.xml"/>
-    <mapping resource="modelo/dto/Equipo.hbm.xml"/>
-    <mapping resource="modelo/dto/PerfilJugador.hbm.xml"/>
-    <mapping resource="modelo/dto/EstadoSolicitud.hbm.xml"/>
-    <mapping resource="modelo/dto/VideoJuego.hbm.xml"/>
-  </session-factory>
-</hibernate-configuration>
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="liga_videojuegos"/>
+  <table-filter match-name="estado_solicitud"/>
+  <table-filter match-name="tipo_jugador"/>
+  <table-filter match-name="perfil_jugador"/>
+  <table-filter match-name="liga"/>
+  <table-filter match-name="incripcion"/>
+  <table-filter match-name="tipo_usuario"/>
+  <table-filter match-name="usuario"/>
+  <table-filter match-name="video_juego"/>
+  <table-filter match-name="equipo"/>
+</hibernate-reverse-engineering>
