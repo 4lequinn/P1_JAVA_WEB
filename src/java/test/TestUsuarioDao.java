@@ -6,11 +6,8 @@
 
 package test;
 
-/**
- * 
- * @author Sammy Guergachi <sguergachi at gmail.com>
- */
-public class TestUsuario {
+
+public class TestUsuarioDao {
     public static void main(String[] args) {
         
     }
