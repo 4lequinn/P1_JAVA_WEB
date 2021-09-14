@@ -22,6 +22,14 @@ import modelo.dto.Usuario;
 public class TestInscripcionDao {
 
     public static void main(String[] args) {
+        
+        //////////////////////////////////////////////////
+        //
+        //           OK!
+        //
+        /////////////////////////////////////////////////
+        
+        
         EstadoSolicitud estadoSolicitud = new EstadoSolicitud(2);
         TipoUsuario tipoUsuario = new TipoUsuario(2);
         Usuario usuario = new Usuario(1, tipoUsuario, "Jorge", "Ricardo Milos 69");

@@ -6,6 +6,7 @@
 
 package test;
 
+import java.util.List;
 import javax.swing.JOptionPane;
 import modelo.dao.EquipoDAO;
 import modelo.dto.Equipo;
@@ -23,6 +24,15 @@ import modelo.dto.Usuario;
  */
 public class TestEquipoDAO {
     public static void main(String[] args) {
+        
+        
+        //////////////////////////////////////////////////
+        //
+        //           OK!
+        //
+        /////////////////////////////////////////////////
+        
+        
         EquipoDAO dao = new EquipoDAO();
         Liga liga = new Liga(1);
         EstadoSolicitud estadoSolicitud = new EstadoSolicitud(2);
@@ -31,15 +41,50 @@ public class TestEquipoDAO {
         TipoJugador tipoJugador = new TipoJugador(1);
         PerfilJugador perfilJugador = new PerfilJugador(1, tipoJugador, usuario, "Jorge", "lolero.promedio@hotmail.com");
         Incripcion inscripcion = new Incripcion(3, estadoSolicitud, perfilJugador);
-        Equipo equipo = new Equipo(inscripcion, liga, "TeaM Mukita", 3);
+        Equipo equipo = new Equipo(1,inscripcion, liga, "TeaM Mukita chico", 3);
         
         
         //Agregar Equipo
         //OK
-        if(dao.agregar(equipo)){
-            JOptionPane.showMessageDialog(null, "Agregó!");
-        }else{
-            JOptionPane.showMessageDialog(null, "NO se agregó");
-        }
+        
+//        if(dao.agregar(equipo)){
+//            JOptionPane.showMessageDialog(null, "Agregó!");
+//        }else{
+//            JOptionPane.showMessageDialog(null, "NO se agregó");
+//        }
+        
+        //Modificar perfil
+        //OK
+        
+//        if(dao.modificar(equipo)){
+//            JOptionPane.showMessageDialog(null, "Modificó!");
+//        }else{
+//            JOptionPane.showMessageDialog(null, "No se modificó");
+//        }
+
+        //Buscar Perfil
+        //OK
+        
+//        Equipo team = new Equipo();
+//        team = dao.buscar(1);
+//        System.out.println(team.getNombre());
+
+        //Listar Perfiles
+        //Ok
+        
+//    List<Equipo> listaEquipo = dao.listar();
+//    for(Equipo x:listaEquipo){
+//        System.out.println(x.getLiga().getDescripcion());
+//    }
+    
+        //Eliminar Equipo
+        //OK
+        
+//        if(dao.eliminar(equipo.getId())){
+//            JOptionPane.showMessageDialog(null, "Eliminó!");
+//        }else{
+//            JOptionPane.showMessageDialog(null, "No se eliminó");
+//        }
+
     }
 }

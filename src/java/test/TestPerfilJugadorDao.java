@@ -55,19 +55,24 @@ public class TestPerfilJugadorDao {
 
         //Listar Perfiles
         //Ok
+        
 //    List<PerfilJugador> listaPerfil = dao.listar();
 //    for(PerfilJugador x:listaPerfil){
 //        System.out.println(x.getCorreo());
 //    }
+
         //Modificar perfil
         //OK
+        
 //        if(dao.modificar(perfilJugador)){
 //            JOptionPane.showMessageDialog(null, "Modificó!");
 //        }else{
 //            JOptionPane.showMessageDialog(null, "No se modificó");
 //        }
+
         //Eliminar Perfil
         //OK
+        
 //        if(dao.eliminar(perfilJugador.getId())){
 //            JOptionPane.showMessageDialog(null, "Eliminó!");
 //        }else{
