@@ -15,6 +15,10 @@ public class TipoJugador  implements java.io.Serializable {
      private String descripcion;
      private Set perfilJugadors = new HashSet(0);
 
+    public TipoJugador(Integer id) {
+        this.id = id;
+    }
+
     public TipoJugador() {
     }
 
