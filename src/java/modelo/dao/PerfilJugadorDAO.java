@@ -7,18 +7,18 @@
 package modelo.dao;
 
 import modelo.crud.MetodosModelo;
-import modelo.dto.Usuario;
+import modelo.dto.PerfilJugador;
 
+/**
+ * 
+ * @author Jorge
+ */
 
-public class UsuarioDao extends MetodosModelo<Usuario>{
+public class PerfilJugadorDAO extends MetodosModelo<PerfilJugador>{
 
     @Override
     public String getNombreModelo() {
-        return "Usuario";
+        return "PerfilJugador";
     }
-    
-    // Desarrollar los métodos
-    
-    // Login
     
 }

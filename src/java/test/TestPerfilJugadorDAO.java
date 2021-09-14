@@ -7,7 +7,7 @@ package test;
 
 import java.util.List;
 import javax.swing.JOptionPane;
-import modelo.dao.PerfilJugadorDao;
+import modelo.dao.PerfilJugadorDAO;
 import modelo.dto.PerfilJugador;
 import modelo.dto.TipoJugador;
 import modelo.dto.TipoUsuario;
@@ -17,7 +17,7 @@ import modelo.dto.Usuario;
  *
  * @author Jorge
  */
-public class TestPerfilJugadorDao {
+public class TestPerfilJugadorDAO {
 
     public static void main(String[] args) {
 
@@ -36,7 +36,7 @@ public class TestPerfilJugadorDao {
         Usuario usuario = new Usuario(1, tipoUsuario, "Jorge", "Ricardo Milos 69");
         TipoJugador tipoJugador = new TipoJugador(1);
         PerfilJugador perfilJugador = new PerfilJugador(2, tipoJugador, usuario, "Jorge", "lolero.promedio@hotmail.com","Experto en trolearla");
-        PerfilJugadorDao dao = new PerfilJugadorDao();
+        PerfilJugadorDAO dao = new PerfilJugadorDAO();
 
         //Agregar Perfil
         //OK

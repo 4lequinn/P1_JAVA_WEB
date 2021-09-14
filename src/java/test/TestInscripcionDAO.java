@@ -19,7 +19,7 @@ import modelo.dto.Usuario;
  *
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
-public class TestInscripcionDao {
+public class TestInscripcionDAO {
 
     public static void main(String[] args) {
         
@@ -41,11 +41,11 @@ public class TestInscripcionDao {
         // Agregar Inscripción
         // OK
         
-        if (dao.agregar(inscripcion)) {
-            JOptionPane.showMessageDialog(null, "AGREGÓ!");
-        } else {
-            JOptionPane.showMessageDialog(null, "NO AGREGÓ!");
-        }
+//        if (dao.agregar(inscripcion)) {
+//            JOptionPane.showMessageDialog(null, "AGREGÓ!");
+//        } else {
+//            JOptionPane.showMessageDialog(null, "NO AGREGÓ!");
+//        }
 
         // Modificar Inscripción
         // OK

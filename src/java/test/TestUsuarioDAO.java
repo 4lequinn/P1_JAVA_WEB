@@ -8,7 +8,7 @@ package test;
 
 import java.util.List;
 import javax.swing.JOptionPane;
-import modelo.dao.UsuarioDao;
+import modelo.dao.UsuarioDAO;
 import modelo.dto.TipoUsuario;
 import modelo.dto.Usuario;
 
@@ -17,7 +17,7 @@ import modelo.dto.Usuario;
  * @author Jorge
  */
 
-public class TestUsuarioDao {
+public class TestUsuarioDAO {
     public static void main(String[] args) {
         //////////////////////////////////////////////////
         //
@@ -27,7 +27,7 @@ public class TestUsuarioDao {
         
         TipoUsuario tipoUsuario = new TipoUsuario(1);
         Usuario usuario = new Usuario(1,tipoUsuario, "Jorge", "Ricardo Milos 69 uwu");
-        UsuarioDao dao = new UsuarioDao();
+        UsuarioDAO dao = new UsuarioDAO();
         
         // AGREGAR USUARIO
 //        // OK
