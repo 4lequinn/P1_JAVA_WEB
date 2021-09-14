@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 13-09-2021 22:41:07 by Hibernate Tools 4.3.1 -->
+<!-- Generated 14-09-2021 18:12:56 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.dto.Incripcion" table="incripcion" catalog="liga_videojuegos" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
@@ -17,11 +17,11 @@
         <property name="fecha" type="timestamp">
             <column name="fecha" length="19" not-null="true" />
         </property>
-        <set name="equipos" table="equipo" inverse="true" lazy="true" fetch="select">
+        <set name="detalleEquipos" table="detalle_equipo" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="id_incripcion" not-null="true" />
+                <column name="id_inscripcion" not-null="true" />
             </key>
-            <one-to-many class="modelo.dto.Equipo" />
+            <one-to-many class="modelo.dto.DetalleEquipo" />
         </set>
     </class>
 </hibernate-mapping>

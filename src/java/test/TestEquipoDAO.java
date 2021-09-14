@@ -39,19 +39,19 @@ public class TestEquipoDAO {
         TipoUsuario tipoUsuario = new TipoUsuario(2);
         Usuario usuario = new Usuario(1, tipoUsuario, "Jorge", "Ricardo Milos 69");
         TipoJugador tipoJugador = new TipoJugador(1);
-        PerfilJugador perfilJugador = new PerfilJugador(1, tipoJugador, usuario, "Jorge", "lolero.promedio@hotmail.com");
-        Incripcion inscripcion = new Incripcion(3, estadoSolicitud, perfilJugador);
-        Equipo equipo = new Equipo(1,inscripcion, liga, "TeaM Mukita chico", 3);
+        PerfilJugador perfilJugador = new PerfilJugador(1, tipoJugador, usuario, "Jorge", "lolero.promedio@hotmail.com","Experto en trolearla");
+        Incripcion inscripcion = new Incripcion(2, estadoSolicitud, perfilJugador);
+        Equipo equipo = new Equipo(1, liga, perfilJugador, "Team Mukita", 1);
         
         
         //Agregar Equipo
         //OK
         
-//        if(dao.agregar(equipo)){
-//            JOptionPane.showMessageDialog(null, "Agregó!");
-//        }else{
-//            JOptionPane.showMessageDialog(null, "NO se agregó");
-//        }
+        if(dao.agregar(equipo)){
+            JOptionPane.showMessageDialog(null, "Agregó!");
+        }else{
+            JOptionPane.showMessageDialog(null, "NO se agregó");
+        }
         
         //Modificar perfil
         //OK

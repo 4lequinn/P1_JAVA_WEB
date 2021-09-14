@@ -3,12 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/jorge/Documents/NetBeansProjects/liga_videojuegos/src/java/hibernate.cfg.xml</file>
-            <file>file:/C:/Users/jorge/Documents/NetBeansProjects/liga_videojuegos/src/java/modelo/dao/UsuarioDao.java</file>
+            <file>file:/C:/Users/jorge/Documents/NetBeansProjects/liga_videojuegos/src/java/test/TestInscripcionDao.java</file>
+            <file>file:/C:/Users/jorge/Documents/NetBeansProjects/liga_videojuegos/src/java/modelo/dto/Equipo.java</file>
             <file>file:/C:/Users/jorge/Documents/NetBeansProjects/liga_videojuegos/src/java/test/TestUsuarioDao.java</file>
-            <file>file:/C:/Users/jorge/Documents/NetBeansProjects/liga_videojuegos/src/java/hibernate.reveng.xml</file>
-            <file>file:/C:/Users/jorge/Documents/NetBeansProjects/liga_videojuegos/src/java/modelo/crud/MetodosModelo.java</file>
-            <file>file:/C:/Users/jorge/Documents/NetBeansProjects/liga_videojuegos/src/java/modelo/dto/Usuario.java</file>
+            <file>file:/C:/Users/jorge/Documents/NetBeansProjects/liga_videojuegos/src/java/modelo/dao/EquipoDAO.java</file>
+            <file>file:/C:/Users/jorge/Documents/NetBeansProjects/liga_videojuegos/src/java/modelo/dto/Incripcion.java</file>
+            <file>file:/C:/Users/jorge/Documents/NetBeansProjects/liga_videojuegos/src/java/test/TestEquipoDAO.java</file>
+            <file>file:/C:/Users/jorge/Documents/NetBeansProjects/liga_videojuegos/src/java/test/TestPerfilJugadorDao.java</file>
+            <file>file:/C:/Users/jorge/Documents/NetBeansProjects/liga_videojuegos/src/java/modelo/dto/Liga.java</file>
         </group>
     </open-files>
 </project-private>

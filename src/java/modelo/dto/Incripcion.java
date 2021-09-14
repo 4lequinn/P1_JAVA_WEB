@@ -1,5 +1,5 @@
 package modelo.dto;
-// Generated 13-09-2021 22:41:06 by Hibernate Tools 4.3.1
+// Generated 14-09-2021 18:12:56 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -16,7 +16,7 @@ public class Incripcion  implements java.io.Serializable {
      private EstadoSolicitud estadoSolicitud;
      private PerfilJugador perfilJugador;
      private Date fecha;
-     private Set equipos = new HashSet(0);
+     private Set detalleEquipos = new HashSet(0);
 
     public Incripcion() {
     }
@@ -24,17 +24,17 @@ public class Incripcion  implements java.io.Serializable {
     public Incripcion(Integer id) {
         this.id = id;
     }
-    
-    
+	
     public Incripcion(Integer id, EstadoSolicitud estadoSolicitud, PerfilJugador perfilJugador) {
         this.id = id;
         this.estadoSolicitud = estadoSolicitud;
         this.perfilJugador = perfilJugador;
     }
-    public Incripcion(EstadoSolicitud estadoSolicitud, PerfilJugador perfilJugador, Set equipos) {
+    public Incripcion(Integer id, EstadoSolicitud estadoSolicitud, PerfilJugador perfilJugador, Set detalleEquipos) {
+       this.id = id;
        this.estadoSolicitud = estadoSolicitud;
        this.perfilJugador = perfilJugador;
-       this.equipos = equipos;
+       this.detalleEquipos = detalleEquipos;
     }
    
     public Integer getId() {
@@ -65,12 +65,12 @@ public class Incripcion  implements java.io.Serializable {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-    public Set getEquipos() {
-        return this.equipos;
+    public Set getDetalleEquipos() {
+        return this.detalleEquipos;
     }
     
-    public void setEquipos(Set equipos) {
-        this.equipos = equipos;
+    public void setDetalleEquipos(Set detalleEquipos) {
+        this.detalleEquipos = detalleEquipos;
     }
 
 

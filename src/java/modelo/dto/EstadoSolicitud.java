@@ -1,5 +1,5 @@
 package modelo.dto;
-// Generated 13-09-2021 22:41:06 by Hibernate Tools 4.3.1
+// Generated 14-09-2021 18:12:56 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -21,7 +21,8 @@ public class EstadoSolicitud  implements java.io.Serializable {
     public EstadoSolicitud(Integer id) {
         this.id = id;
     }
-   	
+
+	
     public EstadoSolicitud(String descripcion) {
         this.descripcion = descripcion;
     }

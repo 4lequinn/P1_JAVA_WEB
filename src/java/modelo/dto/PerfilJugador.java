@@ -1,5 +1,5 @@
 package modelo.dto;
-// Generated 13-09-2021 22:41:06 by Hibernate Tools 4.3.1
+// Generated 14-09-2021 18:12:56 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -16,25 +16,35 @@ public class PerfilJugador  implements java.io.Serializable {
      private Usuario usuario;
      private String nombre;
      private String correo;
+     private String habilidad;
      private Set incripcions = new HashSet(0);
+     private Set equipos = new HashSet(0);
 
     public PerfilJugador() {
     }
 
+    public PerfilJugador(Integer id) {
+        this.id = id;
+    }
+
+    
 	
-    public PerfilJugador(Integer id,TipoJugador tipoJugador, Usuario usuario, String nombre, String correo) {
+    public PerfilJugador(Integer id, TipoJugador tipoJugador, Usuario usuario, String nombre, String correo, String habilidad) {
         this.id = id;
         this.tipoJugador = tipoJugador;
         this.usuario = usuario;
         this.nombre = nombre;
         this.correo = correo;
+        this.habilidad = habilidad;
     }
-    public PerfilJugador(TipoJugador tipoJugador, Usuario usuario, String nombre, String correo, Set incripcions) {
+    public PerfilJugador(TipoJugador tipoJugador, Usuario usuario, String nombre, String correo, String habilidad, Set incripcions, Set equipos) {
        this.tipoJugador = tipoJugador;
        this.usuario = usuario;
        this.nombre = nombre;
        this.correo = correo;
+       this.habilidad = habilidad;
        this.incripcions = incripcions;
+       this.equipos = equipos;
     }
    
     public Integer getId() {
@@ -72,12 +82,26 @@ public class PerfilJugador  implements java.io.Serializable {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
+    public String getHabilidad() {
+        return this.habilidad;
+    }
+    
+    public void setHabilidad(String habilidad) {
+        this.habilidad = habilidad;
+    }
     public Set getIncripcions() {
         return this.incripcions;
     }
     
     public void setIncripcions(Set incripcions) {
         this.incripcions = incripcions;
+    }
+    public Set getEquipos() {
+        return this.equipos;
+    }
+    
+    public void setEquipos(Set equipos) {
+        this.equipos = equipos;
     }
 
 

@@ -30,7 +30,7 @@ public class TestUsuarioDao {
         UsuarioDao dao = new UsuarioDao();
         
         // AGREGAR USUARIO
-        // OK
+//        // OK
 //        if(dao.agregar(usuario)){
 //            JOptionPane.showMessageDialog(null, "AGREGÓ!");
 //        }else{

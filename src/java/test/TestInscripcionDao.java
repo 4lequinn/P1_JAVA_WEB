@@ -34,18 +34,18 @@ public class TestInscripcionDao {
         TipoUsuario tipoUsuario = new TipoUsuario(2);
         Usuario usuario = new Usuario(1, tipoUsuario, "Jorge", "Ricardo Milos 69");
         TipoJugador tipoJugador = new TipoJugador(1);
-        PerfilJugador perfilJugador = new PerfilJugador(1, tipoJugador, usuario, "Jorge", "lolero.promedio@hotmail.com");
+        PerfilJugador perfilJugador = new PerfilJugador(1, tipoJugador, usuario, "Jorge", "lolero.promedio@hotmail.com","Experto en trolearla");
         Incripcion inscripcion = new Incripcion(2, estadoSolicitud, perfilJugador);
         InscripcionDAO dao = new InscripcionDAO();
 
         // Agregar Inscripción
         // OK
         
-//        if (dao.agregar(inscripcion)) {
-//            JOptionPane.showMessageDialog(null, "AGREGÓ!");
-//        } else {
-//            JOptionPane.showMessageDialog(null, "NO AGREGÓ!");
-//        }
+        if (dao.agregar(inscripcion)) {
+            JOptionPane.showMessageDialog(null, "AGREGÓ!");
+        } else {
+            JOptionPane.showMessageDialog(null, "NO AGREGÓ!");
+        }
 
         // Modificar Inscripción
         // OK
