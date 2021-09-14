@@ -1,5 +1,5 @@
 package modelo.dto;
-// Generated 13-09-2021 19:04:06 by Hibernate Tools 4.3.1
+// Generated 13-09-2021 22:41:06 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -15,11 +15,11 @@ public class TipoJugador  implements java.io.Serializable {
      private String descripcion;
      private Set perfilJugadors = new HashSet(0);
 
-    public TipoJugador(Integer id) {
-        this.id = id;
+    public TipoJugador() {
     }
 
-    public TipoJugador() {
+    public TipoJugador(Integer id) {
+        this.id = id;
     }
 
 	

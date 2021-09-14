@@ -1,5 +1,5 @@
 package modelo.dto;
-// Generated 13-09-2021 19:04:06 by Hibernate Tools 4.3.1
+// Generated 13-09-2021 22:41:06 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -30,8 +30,7 @@ public class Usuario  implements java.io.Serializable {
         this.usuario = usuario;
         this.contrasenia = contrasenia;
     }
-    public Usuario(Integer id, TipoUsuario tipoUsuario, String usuario, String contrasenia, Set perfilJugadors) {
-       this.id = id;
+    public Usuario(TipoUsuario tipoUsuario, String usuario, String contrasenia, Set perfilJugadors) {
        this.tipoUsuario = tipoUsuario;
        this.usuario = usuario;
        this.contrasenia = contrasenia;

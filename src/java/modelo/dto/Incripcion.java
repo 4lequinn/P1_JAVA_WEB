@@ -1,5 +1,5 @@
 package modelo.dto;
-// Generated 13-09-2021 19:04:06 by Hibernate Tools 4.3.1
+// Generated 13-09-2021 22:41:06 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -21,16 +21,19 @@ public class Incripcion  implements java.io.Serializable {
     public Incripcion() {
     }
 
-	
-    public Incripcion(EstadoSolicitud estadoSolicitud, PerfilJugador perfilJugador, Date fecha) {
+    public Incripcion(Integer id) {
+        this.id = id;
+    }
+    
+    
+    public Incripcion(Integer id, EstadoSolicitud estadoSolicitud, PerfilJugador perfilJugador) {
+        this.id = id;
         this.estadoSolicitud = estadoSolicitud;
         this.perfilJugador = perfilJugador;
-        this.fecha = fecha;
     }
-    public Incripcion(EstadoSolicitud estadoSolicitud, PerfilJugador perfilJugador, Date fecha, Set equipos) {
+    public Incripcion(EstadoSolicitud estadoSolicitud, PerfilJugador perfilJugador, Set equipos) {
        this.estadoSolicitud = estadoSolicitud;
        this.perfilJugador = perfilJugador;
-       this.fecha = fecha;
        this.equipos = equipos;
     }
    
