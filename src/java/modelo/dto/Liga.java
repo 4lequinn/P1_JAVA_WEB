@@ -20,7 +20,10 @@ public class Liga  implements java.io.Serializable {
     public Liga() {
     }
 
-	
+    public Liga(Integer id) {
+        this.id = id;
+    }
+    
     public Liga(VideoJuego videoJuego, String descripcion, int cantidadEquipo) {
         this.videoJuego = videoJuego;
         this.descripcion = descripcion;
