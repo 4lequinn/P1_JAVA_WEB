@@ -11,8 +11,9 @@ import modelo.dto.Equipo;
 
 /**
  * 
- * @author Sammy Guergachi <sguergachi at gmail.com>
+ * @author Jorge
  */
+
 public class EquipoDAO extends MetodosModelo<Equipo> {
 
     @Override

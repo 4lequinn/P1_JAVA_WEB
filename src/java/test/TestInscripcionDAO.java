@@ -16,9 +16,10 @@ import modelo.dto.TipoUsuario;
 import modelo.dto.Usuario;
 
 /**
- *
- * @author Sammy Guergachi <sguergachi at gmail.com>
+ * 
+ * @author Jorge
  */
+
 public class TestInscripcionDAO {
 
     public static void main(String[] args) {

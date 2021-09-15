@@ -12,6 +12,10 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+/**
+ * 
+ * @author Jorge
+ */
 
 public abstract class MetodosModelo <Entidad> {
     //Capturamos el nombre del modelo

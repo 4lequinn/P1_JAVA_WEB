@@ -19,7 +19,10 @@ public class VideoJuego  implements java.io.Serializable {
     public VideoJuego() {
     }
 
-	
+    public VideoJuego(Integer id) {
+        this.id = id;
+    }
+    
     public VideoJuego(String nombre, String tipoJuego) {
         this.nombre = nombre;
         this.tipoJuego = tipoJuego;
