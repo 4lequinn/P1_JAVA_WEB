@@ -19,6 +19,8 @@ import modelo.dto.Usuario;
 
 public class TestUsuarioDAO {
     public static void main(String[] args) {
+        
+        
         //////////////////////////////////////////////////
         //
         //           OK!

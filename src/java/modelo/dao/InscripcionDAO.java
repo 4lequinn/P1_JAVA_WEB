@@ -20,5 +20,12 @@ public class InscripcionDAO extends MetodosModelo<Incripcion>{
     public String getNombreModelo() {
         return "Incripcion";
     }
+    
+        
+    // Métodos Custom
+    
+    // Listar según ESTADO DE INSCRIPCIÓN
+    // WHERE ID = 1,2 OR 3
+    // ACEPTADA - RECHAZADA - PENDIENTE
    
 }

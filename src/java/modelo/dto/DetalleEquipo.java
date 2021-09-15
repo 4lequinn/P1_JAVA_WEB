@@ -16,7 +16,12 @@ public class DetalleEquipo  implements java.io.Serializable {
     public DetalleEquipo() {
     }
 
-    public DetalleEquipo(Equipo equipo, Incripcion incripcion) {
+    public DetalleEquipo(Integer id) {
+        this.id = id;
+    }
+    
+    public DetalleEquipo(Integer id, Equipo equipo, Incripcion incripcion) {
+       this.id = id;
        this.equipo = equipo;
        this.incripcion = incripcion;
     }

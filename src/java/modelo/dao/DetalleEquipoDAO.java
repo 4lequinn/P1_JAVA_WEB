@@ -13,7 +13,7 @@ import modelo.dto.DetalleEquipo;
  * 
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
-public class DetalleDAO extends MetodosModelo<DetalleEquipo>{
+public class DetalleEquipoDAO extends MetodosModelo<DetalleEquipo>{
 
     @Override
     public String getNombreModelo() {
