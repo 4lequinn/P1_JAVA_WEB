@@ -7,17 +7,17 @@
 package modelo.dao;
 
 import modelo.crud.MetodosModelo;
-import modelo.dto.Usuario;
+import modelo.dto.DetalleEquipo;
 
-
-public class UsuarioDAO extends MetodosModelo<Usuario>{
+/**
+ * 
+ * @author Sammy Guergachi <sguergachi at gmail.com>
+ */
+public class DetalleDAO extends MetodosModelo<DetalleEquipo>{
 
     @Override
     public String getNombreModelo() {
-        return "Usuario";
+        return "DetalleEquipo";
     }
     
-    // Desarrollar los métodos
-    
-    // Login
 }
