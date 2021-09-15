@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13-09-2021 17:55:00 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.dto.Incripcion" table="incripcion" catalog="liga_videojuegos" optimistic-lock="version">
+        <id name="idIncripcion" type="java.lang.Integer">
+            <column name="id_incripcion" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="estadoSolicitud" class="modelo.dto.EstadoSolicitud" fetch="select">
+            <column name="id_estado" not-null="true" />
+        </many-to-one>
+        <many-to-one name="perfilJugador" class="modelo.dto.PerfilJugador" fetch="select">
+            <column name="id_jugador" not-null="true" />
+        </many-to-one>
+        <property name="fecha" type="timestamp">
+            <column name="fecha" length="19" not-null="true" />
+        </property>
+        <set name="equipos" table="equipo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_incripcion" not-null="true" />
+            </key>
+            <one-to-many class="modelo.dto.Equipo" />
+        </set>
+    </class>
+</hibernate-mapping>
