@@ -6,12 +6,16 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+<link rel="stylesheet" href="static/css/base.css">
 <html>
     <head>
+        <%@include file="base_bar.jsp" %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Index</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        
     </body>
+    <%@include file="base_footer.jsp" %>
 </html>
