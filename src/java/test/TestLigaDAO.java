@@ -56,11 +56,11 @@ public class TestLigaDAO {
   
         // ELIMINAR LIGA
         // OK
-        if(dao.eliminar(2)){
-            JOptionPane.showMessageDialog(null, "Eliminó!");
-        }else{
-            JOptionPane.showMessageDialog(null, "NO Eliminó!");
-        }
+//        if(dao.eliminar(2)){
+//            JOptionPane.showMessageDialog(null, "Eliminó!");
+//        }else{
+//            JOptionPane.showMessageDialog(null, "NO Eliminó!");
+//        }
 
 
 
