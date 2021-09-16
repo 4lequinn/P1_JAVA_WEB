@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-09-2021 a las 22:01:51
+-- Tiempo de generación: 16-09-2021 a las 04:24:22
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 7.3.29
 
@@ -98,7 +98,7 @@ CREATE TABLE `perfil_jugador` (
   `correo` varchar(80) NOT NULL,
   `habilidad` varchar(80) NOT NULL,
   `id_tipo_jugador` int(11) NOT NULL,
-  `id_usuario` int(11) NOT NULL
+  `id_usuario` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -130,7 +130,6 @@ CREATE TABLE `tipo_usuario` (
 --
 
 CREATE TABLE `usuario` (
-  `id` int(11) NOT NULL,
   `usuario` varchar(50) NOT NULL,
   `contrasenia` varchar(50) NOT NULL,
   `id_tipo` int(11) NOT NULL
@@ -194,8 +193,8 @@ ALTER TABLE `liga`
 --
 ALTER TABLE `perfil_jugador`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_usuario` (`id_usuario`),
-  ADD KEY `id_tipo_jugador` (`id_tipo_jugador`);
+  ADD KEY `id_tipo_jugador` (`id_tipo_jugador`),
+  ADD KEY `id_usuario` (`id_usuario`);
 
 --
 -- Indices de la tabla `tipo_jugador`
@@ -213,7 +212,7 @@ ALTER TABLE `tipo_usuario`
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`usuario`),
   ADD KEY `id_tipo` (`id_tipo`);
 
 --
@@ -275,12 +274,6 @@ ALTER TABLE `tipo_usuario`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `video_juego`
 --
 ALTER TABLE `video_juego`
@@ -321,14 +314,15 @@ ALTER TABLE `liga`
 -- Filtros para la tabla `perfil_jugador`
 --
 ALTER TABLE `perfil_jugador`
-  ADD CONSTRAINT `perfil_jugador_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`),
-  ADD CONSTRAINT `perfil_jugador_ibfk_2` FOREIGN KEY (`id_tipo_jugador`) REFERENCES `tipo_jugador` (`id`);
+  ADD CONSTRAINT `perfil_jugador_ibfk_2` FOREIGN KEY (`id_tipo_jugador`) REFERENCES `tipo_jugador` (`id`),
+  ADD CONSTRAINT `perfil_jugador_ibfk_3` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`usuario`);
 
 --
 -- Filtros para la tabla `usuario`
 --
 ALTER TABLE `usuario`
   ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_tipo`) REFERENCES `tipo_usuario` (`id`);
+
 
 --
 -- TIPOS DE USUARIO
