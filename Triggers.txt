@@ -1,0 +1,55 @@
+
+-- Valida que no se puedan agregar más de 8 jugadores
+
+DELIMITER $$
+CREATE OR REPLACE TRIGGER TRG_VALIDAR_EQUIPO_INSERT
+BEFORE INSERT ON detalle_equipo
+FOR EACH ROW
+BEGIN
+    declare v_cantidad int;
+	SELECT cantidad_jugador into v_cantidad from equipo where id = new.id_equipo;
+    IF v_cantidad < 8 THEN
+		UPDATE equipo set cantidad_jugador = cantidad_jugador + 1 where id = new.id_equipo;
+    else
+		SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'ERROR EL EQUIPO ESTÁ COMPLETO';
+    END IF;
+END $$
+DELIMITER ;
+
+-- Valida que al cambiar de equipo sólo se pueda a unir a otro que le falten jugadores
+DELIMITER $$
+CREATE OR REPLACE TRIGGER TRG_VALIDAR_EQUIPO_INSERT
+BEFORE UPDATE ON detalle_equipo
+FOR EACH ROW
+BEGIN
+    declare v_cantidad int;
+	SELECT cantidad_jugador into v_cantidad from equipo where id = new.id_equipo;
+    IF v_cantidad < 8 THEN
+		UPDATE equipo set cantidad_jugador = cantidad_jugador + 1 where id = new.id_equipo;
+        UPDATE equipo set cantidad_jugador = cantidad_jugador - 1 WHERE id = old.id_equipo;
+    else
+		SIGNAL SQLSTATE '45001' SET MESSAGE_TEXT = 'ERROR EL EQUIPO ESTÁ COMPLETO';
+    END IF;
+END $$
+DELIMITER ;
+
+-- Valida que cuando se elimina un jugador de un equipo se reste la cantidad de jugadores de dicho equipo
+DELIMITER $$
+CREATE OR REPLACE TRIGGER TRG_VALIDAR_EQUIPO_INSERT
+AFTER DELETE ON detalle_equipo
+FOR EACH ROW
+BEGIN
+    declare v_cantidad int;
+	SELECT cantidad_jugador into v_cantidad from equipo where id = old.id_equipo;
+	UPDATE equipo SET cantidad_jugador = cantidad_jugador - 1 WHERE id = old.id_equipo;
+END $$
+DELIMITER ;
+
+// Procedimiento que agrega un detalle
+DELIMITER $$ 
+CREATE OR REPLACE PROCEDURE SP_INSERTAR_DETALLE_EQUIPO(IN p_id_inscripcion int, IN p_idequipo int)
+BEGIN
+	INSERT INTO detalle_equipo (id_inscripcion, id_equipo) VALUES (p_id_inscripcion, p_idequipo);
+END $$
+DELIMITER ;
+
