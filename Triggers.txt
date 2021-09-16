@@ -18,7 +18,7 @@ DELIMITER ;
 
 -- Valida que al cambiar de equipo sólo se pueda a unir a otro que le falten jugadores
 DELIMITER $$
-CREATE OR REPLACE TRIGGER TRG_VALIDAR_EQUIPO_INSERT
+CREATE OR REPLACE TRIGGER TRG_VALIDAR_EQUIPO_UPDATE
 BEFORE UPDATE ON detalle_equipo
 FOR EACH ROW
 BEGIN
@@ -35,7 +35,7 @@ DELIMITER ;
 
 -- Valida que cuando se elimina un jugador de un equipo se reste la cantidad de jugadores de dicho equipo
 DELIMITER $$
-CREATE OR REPLACE TRIGGER TRG_VALIDAR_EQUIPO_INSERT
+CREATE OR REPLACE TRIGGER TRG_VALIDAR_EQUIPO_DELETE
 AFTER DELETE ON detalle_equipo
 FOR EACH ROW
 BEGIN
@@ -45,11 +45,51 @@ BEGIN
 END $$
 DELIMITER ;
 
-// Procedimiento que agrega un detalle
-DELIMITER $$ 
-CREATE OR REPLACE PROCEDURE SP_INSERTAR_DETALLE_EQUIPO(IN p_id_inscripcion int, IN p_idequipo int)
+
+-- Valida que no se puedan agregar más de 16 equipos
+
+DELIMITER $$
+CREATE OR REPLACE TRIGGER TRG_VALIDAR_LIGA_INSERT
+BEFORE INSERT ON equipo
+FOR EACH ROW
 BEGIN
-	INSERT INTO detalle_equipo (id_inscripcion, id_equipo) VALUES (p_id_inscripcion, p_idequipo);
+    declare v_cantidad int;
+	SELECT cantidad_equipo into v_cantidad from liga where id = new.id_liga;
+    IF v_cantidad < 16 THEN
+		UPDATE liga set cantidad_equipo = cantidad_equipo + 1 where id = new.id_liga;
+    else
+		SIGNAL SQLSTATE '45004' SET MESSAGE_TEXT = 'ERROR LA LIGA ESTÁ COMPLETA';
+    END IF;
 END $$
 DELIMITER ;
 
+-- Valida que al cambiar un equipo de una liga sólo se pueda a unir a otra que le falten equipos
+DELIMITER $$
+CREATE OR REPLACE TRIGGER TRG_VALIDAR_LIGA_UPDATE
+BEFORE UPDATE ON equipo
+FOR EACH ROW
+BEGIN
+    declare v_cantidad int;
+	SELECT cantidad_equipo into v_cantidad from liga where id = new.id_liga;
+    IF v_cantidad < 16 THEN
+		UPDATE liga set cantidad_equipo = cantidad_equipo + 1 where id = new.id_liga;
+        UPDATE liga set cantidad_equipo = cantidad_equipo - 1 WHERE id = old.id_liga;
+    else
+		SIGNAL SQLSTATE '45005' SET MESSAGE_TEXT = 'ERROR LA LIGA ESTÁ COMPLETA';
+    END IF;
+END $$
+DELIMITER ;
+
+
+
+-- Valida que cuando se elimina un equipo de una liga se reste la cantidad de equipos de dicha liga
+DELIMITER $$
+CREATE OR REPLACE TRIGGER TRG_VALIDAR_LIGA_DELETE
+AFTER DELETE ON equipo
+FOR EACH ROW
+BEGIN
+    declare v_cantidad int;
+	SELECT cantidad_equipo into v_cantidad from liga where id = old.id_liga;
+	UPDATE liga SET cantidad_equipo = cantidad_equipo - 1 WHERE id = old.id_liga;
+END $$
+DELIMITER ;
