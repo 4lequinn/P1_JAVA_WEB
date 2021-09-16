@@ -122,4 +122,21 @@ public class UsuarioDAO{
     // Desarrollar los métodos
     
     // Login
+    public Usuario Loguear(String nombreUsuario, String contrasenia) {
+        Usuario usuario = null;
+        try {
+            conectar();
+            String consulta = "from Usuario where usuario = :nombreUsuario and contrasenia = :contrasenia";
+            Query query = session.createQuery(consulta);
+            // Variable de sustitución
+            query.setString("nombreUsuario", nombreUsuario);
+            query.setString("contrasenia", contrasenia);
+            usuario = (Usuario) query.list().get(0);
+        } catch (Exception e) {
+            System.out.println("Error al buscar " + e.getMessage());
+        }finally{
+            desconectar();
+        }
+        return usuario;
+    }
 }

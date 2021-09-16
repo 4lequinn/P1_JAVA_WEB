@@ -41,13 +41,14 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="liga_videojuegos"/>
-  <table-filter match-name="estado_solicitud"/>
   <table-filter match-name="tipo_jugador"/>
-  <table-filter match-name="perfil_jugador"/>
   <table-filter match-name="liga"/>
-  <table-filter match-name="incripcion"/>
-  <table-filter match-name="tipo_usuario"/>
-  <table-filter match-name="usuario"/>
   <table-filter match-name="video_juego"/>
   <table-filter match-name="equipo"/>
+  <table-filter match-name="estado_solicitud"/>
+  <table-filter match-name="usuario"/>
+  <table-filter match-name="incripcion"/>
+  <table-filter match-name="detalle_equipo"/>
+  <table-filter match-name="tipo_usuario"/>
+  <table-filter match-name="perfil_jugador"/>
 </hibernate-reverse-engineering>

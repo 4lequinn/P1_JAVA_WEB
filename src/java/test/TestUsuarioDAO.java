@@ -70,7 +70,12 @@ public class TestUsuarioDAO {
 //            System.out.println("Contraseñas : " + x.getContrasenia());
 //        }
 
-
+        //LOGIN
+        if(dao.Loguear("jorge", "ricardomilos")!=null){
+            System.out.println("Existe");
+        }else{
+            System.out.println("No existe");
+        }
 
     }
 }

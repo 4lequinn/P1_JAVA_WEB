@@ -18,14 +18,14 @@
                                 <h2 style="color: white;">Ingresa a tu cuenta</h2>
                             </div>
                         </div>
-                        <form class="col-12" action="{% url 'LOGIN'%}" method="POST" onsubmit="return validarTodo_formularioUsuario()">
+                        <form class="col-12" action="ControladorUsuario" method="POST" onsubmit="return validarTodo_formularioUsuario()">
                             <div class="form-group" id="user-group">
-                                <input class="form-control" type="text" name="user" id="user" placeholder="Ingrese su Usuario" value="">
+                                <input class="form-control" type="text" name="txtUser" id="user" placeholder="Ingrese su Usuario" value="">
                             </div>
                             <div class="form-group" id="contrasena-group">
-                                <input class="form-control" type="password" name="pass" id="pass" placeholder="Ingrese su Contraseña" value="">
+                                <input class="form-control" type="password" name="txtPass" id="pass" placeholder="Ingrese su Contraseña" value="">
                             </div>
-                            <button type="submit" class="btn btn-primary"><i value="Registrar" class="fas fa-sign-in-alt"></i>  Ingresar </button>
+                            <button type="submit" class="btn btn-primary" value="Loguear" name="btnAccion" id="btnAccion"><i class="fas fa-sign-in-alt"></i>  Ingresar </button>
                         </form>
                         <div class="condicion">
                             <p><a href="registro.jsp">¿No tienes cuenta? Crea una aquí</a></p>
