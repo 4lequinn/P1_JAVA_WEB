@@ -34,7 +34,7 @@ public class TestPerfilJugadorDAO {
         
          */
         TipoUsuario tipoUsuario = new TipoUsuario(2);
-        Usuario usuario = new Usuario(1, tipoUsuario, "Jorge", "Ricardo Milos 69");
+        Usuario usuario = new Usuario("Jorge",tipoUsuario, "Ricardo Milos 69");
         TipoJugador tipoJugador = new TipoJugador(1);
         PerfilJugador perfilJugador = new PerfilJugador(2, tipoJugador, usuario, "Jorge", "lolero.promedio@hotmail.com","Experto en trolearla");
         PerfilJugadorDAO dao = new PerfilJugadorDAO();

@@ -28,11 +28,11 @@ public class TestUsuarioDAO {
         /////////////////////////////////////////////////
         
         TipoUsuario tipoUsuario = new TipoUsuario(1);
-        Usuario usuario = new Usuario(1,tipoUsuario, "Jorge", "Ricardo Milos 69 uwu");
+        Usuario usuario = new Usuario("jorge", tipoUsuario, "ricardomilos");
         UsuarioDAO dao = new UsuarioDAO();
         
         // AGREGAR USUARIO
-//        // OK
+        // OK
 //        if(dao.agregar(usuario)){
 //            JOptionPane.showMessageDialog(null, "AGREGÓ!");
 //        }else{
@@ -70,7 +70,12 @@ public class TestUsuarioDAO {
 //            System.out.println("Contraseñas : " + x.getContrasenia());
 //        }
 
-
+        //LOGIN
+        if(dao.Loguear("jorge", "ricardomilos")!=null){
+            System.out.println("Existe");
+        }else{
+            System.out.println("No existe");
+        }
 
     }
 }

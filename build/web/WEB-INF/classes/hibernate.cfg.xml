@@ -47,8 +47,11 @@ Contributor(s):
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.current_session_context_class">thread</property>
     <property name="hibernate.hbm2ddl.auto">validate</property>
+    <!-- Esta propiedad permite mapear las tablas foráneas -->
+    <property name="hibernate.enable_lazy_load_no_trans">true</property>
     <mapping resource="modelo/dto/TipoUsuario.hbm.xml"/>
     <mapping resource="modelo/dto/Liga.hbm.xml"/>
+    <mapping resource="modelo/dto/DetalleEquipo.hbm.xml"/>
     <mapping resource="modelo/dto/Usuario.hbm.xml"/>
     <mapping resource="modelo/dto/Incripcion.hbm.xml"/>
     <mapping resource="modelo/dto/TipoJugador.hbm.xml"/>

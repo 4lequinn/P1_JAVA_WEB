@@ -1,5 +1,5 @@
 package modelo.dto;
-// Generated 14-09-2021 18:12:56 by Hibernate Tools 4.3.1
+// Generated 15-09-2021 23:35:47 by Hibernate Tools 4.3.1
 
 
 
@@ -19,7 +19,7 @@ public class DetalleEquipo  implements java.io.Serializable {
     public DetalleEquipo(Integer id) {
         this.id = id;
     }
-    
+
     public DetalleEquipo(Integer id, Equipo equipo, Incripcion incripcion) {
        this.id = id;
        this.equipo = equipo;

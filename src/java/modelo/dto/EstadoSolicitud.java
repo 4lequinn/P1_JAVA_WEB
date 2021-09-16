@@ -1,5 +1,5 @@
 package modelo.dto;
-// Generated 13-09-2021 17:55:00 by Hibernate Tools 4.3.1
+// Generated 15-09-2021 23:35:47 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -11,11 +11,15 @@ import java.util.Set;
 public class EstadoSolicitud  implements java.io.Serializable {
 
 
-     private Integer idEstado;
+     private Integer id;
      private String descripcion;
      private Set incripcions = new HashSet(0);
 
     public EstadoSolicitud() {
+    }
+
+    public EstadoSolicitud(Integer id) {
+        this.id = id;
     }
 
 	
@@ -27,12 +31,12 @@ public class EstadoSolicitud  implements java.io.Serializable {
        this.incripcions = incripcions;
     }
    
-    public Integer getIdEstado() {
-        return this.idEstado;
+    public Integer getId() {
+        return this.id;
     }
     
-    public void setIdEstado(Integer idEstado) {
-        this.idEstado = idEstado;
+    public void setId(Integer id) {
+        this.id = id;
     }
     public String getDescripcion() {
         return this.descripcion;

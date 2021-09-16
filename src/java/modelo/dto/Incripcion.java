@@ -1,5 +1,5 @@
 package modelo.dto;
-// Generated 13-09-2021 17:55:00 by Hibernate Tools 4.3.1
+// Generated 15-09-2021 23:35:47 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -12,34 +12,37 @@ import java.util.Set;
 public class Incripcion  implements java.io.Serializable {
 
 
-     private Integer idIncripcion;
+     private Integer id;
      private EstadoSolicitud estadoSolicitud;
      private PerfilJugador perfilJugador;
      private Date fecha;
-     private Set equipos = new HashSet(0);
+     private Set detalleEquipos = new HashSet(0);
 
     public Incripcion() {
     }
 
-	
-    public Incripcion(EstadoSolicitud estadoSolicitud, PerfilJugador perfilJugador, Date fecha) {
-        this.estadoSolicitud = estadoSolicitud;
-        this.perfilJugador = perfilJugador;
-        this.fecha = fecha;
-    }
-    public Incripcion(EstadoSolicitud estadoSolicitud, PerfilJugador perfilJugador, Date fecha, Set equipos) {
-       this.estadoSolicitud = estadoSolicitud;
-       this.perfilJugador = perfilJugador;
-       this.fecha = fecha;
-       this.equipos = equipos;
-    }
-   
-    public Integer getIdIncripcion() {
-        return this.idIncripcion;
+    public Incripcion(Integer id) {
+        this.id = id;
     }
     
-    public void setIdIncripcion(Integer idIncripcion) {
-        this.idIncripcion = idIncripcion;
+    public Incripcion(Integer id, EstadoSolicitud estadoSolicitud, PerfilJugador perfilJugador) {
+        this.id = id;
+        this.estadoSolicitud = estadoSolicitud;
+        this.perfilJugador = perfilJugador;
+    }
+    public Incripcion(Integer id, EstadoSolicitud estadoSolicitud, PerfilJugador perfilJugador, Set detalleEquipos) {
+       this.id = id;
+       this.estadoSolicitud = estadoSolicitud;
+       this.perfilJugador = perfilJugador;
+       this.detalleEquipos = detalleEquipos;
+    }
+   
+    public Integer getId() {
+        return this.id;
+    }
+    
+    public void setId(Integer id) {
+        this.id = id;
     }
     public EstadoSolicitud getEstadoSolicitud() {
         return this.estadoSolicitud;
@@ -62,12 +65,12 @@ public class Incripcion  implements java.io.Serializable {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-    public Set getEquipos() {
-        return this.equipos;
+    public Set getDetalleEquipos() {
+        return this.detalleEquipos;
     }
     
-    public void setEquipos(Set equipos) {
-        this.equipos = equipos;
+    public void setDetalleEquipos(Set detalleEquipos) {
+        this.detalleEquipos = detalleEquipos;
     }
 
 

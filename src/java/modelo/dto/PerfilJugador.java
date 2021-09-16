@@ -1,5 +1,5 @@
 package modelo.dto;
-// Generated 13-09-2021 17:55:00 by Hibernate Tools 4.3.1
+// Generated 15-09-2021 23:35:47 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -11,37 +11,48 @@ import java.util.Set;
 public class PerfilJugador  implements java.io.Serializable {
 
 
-     private Integer idJugador;
+     private Integer id;
      private TipoJugador tipoJugador;
      private Usuario usuario;
      private String nombre;
      private String correo;
+     private String habilidad;
      private Set incripcions = new HashSet(0);
+     private Set equipos = new HashSet(0);
 
     public PerfilJugador() {
     }
 
+    public PerfilJugador(Integer id) {
+        this.id = id;
+    }
+
 	
-    public PerfilJugador(TipoJugador tipoJugador, Usuario usuario, String nombre, String correo) {
+    public PerfilJugador(Integer id, TipoJugador tipoJugador, Usuario usuario, String nombre, String correo, String habilidad) {
+        this.id = id;
         this.tipoJugador = tipoJugador;
         this.usuario = usuario;
         this.nombre = nombre;
         this.correo = correo;
+        this.habilidad = habilidad;
     }
-    public PerfilJugador(TipoJugador tipoJugador, Usuario usuario, String nombre, String correo, Set incripcions) {
+    public PerfilJugador(Integer id, TipoJugador tipoJugador, Usuario usuario, String nombre, String correo, String habilidad, Set incripcions, Set equipos) {
+       this.id = id;
        this.tipoJugador = tipoJugador;
        this.usuario = usuario;
        this.nombre = nombre;
        this.correo = correo;
+       this.habilidad = habilidad;
        this.incripcions = incripcions;
+       this.equipos = equipos;
     }
    
-    public Integer getIdJugador() {
-        return this.idJugador;
+    public Integer getId() {
+        return this.id;
     }
     
-    public void setIdJugador(Integer idJugador) {
-        this.idJugador = idJugador;
+    public void setId(Integer id) {
+        this.id = id;
     }
     public TipoJugador getTipoJugador() {
         return this.tipoJugador;
@@ -71,12 +82,26 @@ public class PerfilJugador  implements java.io.Serializable {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
+    public String getHabilidad() {
+        return this.habilidad;
+    }
+    
+    public void setHabilidad(String habilidad) {
+        this.habilidad = habilidad;
+    }
     public Set getIncripcions() {
         return this.incripcions;
     }
     
     public void setIncripcions(Set incripcions) {
         this.incripcions = incripcions;
+    }
+    public Set getEquipos() {
+        return this.equipos;
+    }
+    
+    public void setEquipos(Set equipos) {
+        this.equipos = equipos;
     }
 
 

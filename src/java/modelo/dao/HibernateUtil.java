@@ -9,11 +9,10 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.SessionFactory;
 
 /**
- * Hibernate Utility class with a convenient method to get Session Factory
- * object.
- *
- * @author Sammy Guergachi <sguergachi at gmail.com>
+ * 
+ * @author Jorge
  */
+
 public class HibernateUtil {
 
     private static final SessionFactory sessionFactory;
