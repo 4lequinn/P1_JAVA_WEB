@@ -28,11 +28,11 @@ public class TestUsuarioDAO {
         /////////////////////////////////////////////////
         
         TipoUsuario tipoUsuario = new TipoUsuario(1);
-        Usuario usuario = new Usuario(1,tipoUsuario, "Jorge", "Ricardo Milos 69 uwu");
+        Usuario usuario = new Usuario("jorge", tipoUsuario, "ricardomilos");
         UsuarioDAO dao = new UsuarioDAO();
         
         // AGREGAR USUARIO
-//        // OK
+        // OK
 //        if(dao.agregar(usuario)){
 //            JOptionPane.showMessageDialog(null, "AGREGÓ!");
 //        }else{

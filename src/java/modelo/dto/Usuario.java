@@ -1,5 +1,5 @@
 package modelo.dto;
-// Generated 14-09-2021 18:12:56 by Hibernate Tools 4.3.1
+// Generated 15-09-2021 23:35:47 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -11,38 +11,33 @@ import java.util.Set;
 public class Usuario  implements java.io.Serializable {
 
 
-     private Integer id;
-     private TipoUsuario tipoUsuario;
      private String usuario;
+     private TipoUsuario tipoUsuario;
      private String contrasenia;
      private Set perfilJugadors = new HashSet(0);
 
     public Usuario() {
     }
 
-    public Usuario(Integer id) {
-        this.id = id;
-    }
 	
-    public Usuario(Integer id, TipoUsuario tipoUsuario, String usuario, String contrasenia) {
-        this.id = id;
-        this.tipoUsuario = tipoUsuario;
+    public Usuario(String usuario, TipoUsuario tipoUsuario, String contrasenia) {
         this.usuario = usuario;
+        this.tipoUsuario = tipoUsuario;
         this.contrasenia = contrasenia;
     }
-    public Usuario(TipoUsuario tipoUsuario, String usuario, String contrasenia, Set perfilJugadors) {
-       this.tipoUsuario = tipoUsuario;
+    public Usuario(String usuario, TipoUsuario tipoUsuario, String contrasenia, Set perfilJugadors) {
        this.usuario = usuario;
+       this.tipoUsuario = tipoUsuario;
        this.contrasenia = contrasenia;
        this.perfilJugadors = perfilJugadors;
     }
    
-    public Integer getId() {
-        return this.id;
+    public String getUsuario() {
+        return this.usuario;
     }
     
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
     public TipoUsuario getTipoUsuario() {
         return this.tipoUsuario;
@@ -50,13 +45,6 @@ public class Usuario  implements java.io.Serializable {
     
     public void setTipoUsuario(TipoUsuario tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
-    }
-    public String getUsuario() {
-        return this.usuario;
-    }
-    
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
     }
     public String getContrasenia() {
         return this.contrasenia;

@@ -1,5 +1,5 @@
 package modelo.dto;
-// Generated 14-09-2021 18:12:56 by Hibernate Tools 4.3.1
+// Generated 15-09-2021 23:35:47 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -24,6 +24,7 @@ public class Equipo  implements java.io.Serializable {
     public Equipo(Integer id) {
         this.id = id;
     }
+    
 	
     public Equipo(Integer id, Liga liga, PerfilJugador perfilJugador, String nombre, int cantidadJugador) {
         this.id = id;
@@ -32,7 +33,6 @@ public class Equipo  implements java.io.Serializable {
         this.nombre = nombre;
         this.cantidadJugador = cantidadJugador;
     }
-    
     public Equipo(Integer id, Liga liga, PerfilJugador perfilJugador, String nombre, int cantidadJugador, Set detalleEquipos) {
        this.id = id;
        this.liga = liga;

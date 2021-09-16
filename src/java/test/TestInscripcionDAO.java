@@ -33,7 +33,7 @@ public class TestInscripcionDAO {
         
         EstadoSolicitud estadoSolicitud = new EstadoSolicitud(2);
         TipoUsuario tipoUsuario = new TipoUsuario(2);
-        Usuario usuario = new Usuario(1, tipoUsuario, "Jorge", "Ricardo Milos 69");
+        Usuario usuario = new Usuario("Jorge", tipoUsuario,"Ricardo Milos 69");
         TipoJugador tipoJugador = new TipoJugador(1);
         PerfilJugador perfilJugador = new PerfilJugador(1, tipoJugador, usuario, "Jorge", "lolero.promedio@hotmail.com","Experto en trolearla");
         Incripcion inscripcion = new Incripcion(2, estadoSolicitud, perfilJugador);

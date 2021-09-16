@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 13-09-2021 17:55:00 by Hibernate Tools 4.3.1 -->
+<!-- Generated 15-09-2021 23:35:48 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.dto.Incripcion" table="incripcion" catalog="liga_videojuegos" optimistic-lock="version">
-        <id name="idIncripcion" type="java.lang.Integer">
-            <column name="id_incripcion" />
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
             <generator class="identity" />
         </id>
         <many-to-one name="estadoSolicitud" class="modelo.dto.EstadoSolicitud" fetch="select">
@@ -17,11 +17,11 @@
         <property name="fecha" type="timestamp">
             <column name="fecha" length="19" not-null="true" />
         </property>
-        <set name="equipos" table="equipo" inverse="true" lazy="true" fetch="select">
+        <set name="detalleEquipos" table="detalle_equipo" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="id_incripcion" not-null="true" />
+                <column name="id_inscripcion" not-null="true" />
             </key>
-            <one-to-many class="modelo.dto.Equipo" />
+            <one-to-many class="modelo.dto.DetalleEquipo" />
         </set>
     </class>
 </hibernate-mapping>
