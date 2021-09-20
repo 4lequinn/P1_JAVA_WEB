@@ -17,22 +17,15 @@
                             <h2>Perfil</h2>
                         </div>
                     </div>
-                    <form class="col-12" action="index.jsp" method="POST">
+                    <form class="col-12" action="{% url 'REG'%}" method="POST">
                         <div class="form-group" id="name-group">
-                            <input class="form-control" type="text" name="txtNombre" id="txtNombre" placeholder="Ingrese un Nombre" value="holaa" disabled>
+                            <input class="form-control" type="text" name="txtNombre" id="txtNombre" placeholder="Ingrese un Nombre" value="" required>
                         </div> 
                         <div class="form-group" id="email-group">
-                            <input class="form-control" type="email" name="txtCorreo" id="txtCorreo" placeholder="Ingrese un Correo" value="ej@hola" disabled>
+                            <input class="form-control" type="email" name="txtCorreo" id="correo" placeholder="Ingrese un Correo" value="">
                         </div>   
                         <div class="form-group" id="user-group">
-                            <input class="form-control" type="text" name="txtUsuario" id="txtUsuario" placeholder="Ingrese un Usuario" value="udor" disabled>
-                        </div>
-                          
-                        <div class="form-group" id="user-group">
-                            <input class="form-control" type="text" name="txtHabilidad" id="txtHabilidad" placeholder="Ingrese un Usuario" value="udor" disabled>
-                        </div>
-                        <div class="form-group" id="user-group">
-                            <input class="form-control" type="text" name="txtTipoJugador" id="txtTipoJugador" placeholder="Ingrese un Usuario" value="Shooter" disabled>
+                            <input class="form-control" type="text" name="txtUsuario" id="user" placeholder="Ingrese un Usuario" value="" required>
                         </div>
                         <div class="form-group" id="contrasena-group">
                             <input class="form-control" type="password" name="txtContrasenia" id="passw1" placeholder="Ingrese una Contraseña" value="" required> 

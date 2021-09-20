@@ -16,7 +16,7 @@
                             <h2>Registrate</h2>
                         </div>
                     </div>
-                    <form class="col-12" action="index.jsp" method="POST">
+                    <form class="col-12" action="{% url 'REG'%}" method="POST">
                         <div class="form-group" id="name-group">
                             <input class="form-control" type="text" name="txtNombre" id="txtNombre" placeholder="Ingrese un Nombre" value="" required>
                         </div> 
