@@ -1,0 +1,26 @@
+.btn-primary{background-color: #BC391D; border-color: #BC391D}
+.btn-primary:hover{background-color: #304d7b; border-color: #304d7b}
+.modal-content {background-color:#0594d6; padding: 0 20px; box-shadow: 0px 0px 3px #848484;z-index: -1;}
+.user-img {margin-top: -50px; margin-bottom: 35px;}
+.user-img img {width: 100px; height: 100px; box-shadow: 0px 0px 3px #848484; border-radius: 50%;}
+.form-group input {height: 42px; font-size: 18px; border:0; padding-left: 54px; border-radius: 5px;}
+.form-group::before { font-family: "Font Awesome 5 Free"; position: absolute; left: 28px; font-size: 22px; padding-top:4px;}
+/*#region ICONO*/
+.form-group#rut-group::before {content: "\f2c1";}
+.form-group#user-group::before {content: "\f007";}
+.form-group#name-group::before {content: "\f2bd";}
+.form-group#email-group::before {content: "\f0e0";}
+.form-group#date-group::before {content: "\f073";}
+.form-group#phone-group::before {content: "\f3cd";}
+.form-group#home-group::before {content: "\f015";}
+.form-group#contrasena-group::before {content: "\f023";}
+/*#endregion*/
+button{width: 60%; margin: 5px 0 25px;}
+.forgot {padding: 5px 0;}
+.forgot a{color: white;}
+
+input{border-radius: 30px!important; border: 0px!important;}
+
+@media (min-width:1024px) {
+  .titulo-registro h2 {font-size: 40px;}
+}
