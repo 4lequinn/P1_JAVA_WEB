@@ -13,6 +13,17 @@
         <title>Administrador</title>
     </head>
     <div class="home_content">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Administrar Usuario</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Administrar Equipo</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Administrar Liga</a>
+            </li>
+        </ul>
         <div class="container mt-5">
             <h2>Administrador de Usuario</h2>
             <table class="table">
@@ -40,8 +51,8 @@
                         <td>John</td>
                         <td>Doe1274</td>
                         <td><a href="#" class="btn btn-primary"><i class="fas fa-shield-alt"></i>Modificar</a>
-                        <a onclick="confirmDelete()"  class="btn btn-danger"><i class="fas fa-shield-alt"></i>Eliminar</a>
-                        <!-- (<& = x.getId()&> a la función hace falta agregar el ID  -->
+                            <a onclick="confirmDelete()"  class="btn btn-danger"><i class="fas fa-shield-alt"></i>Eliminar</a>
+                            <!-- (<& = x.getId()&> a la función hace falta agregar el ID  -->
                         </td>
                     </tr>
                 </tbody>
