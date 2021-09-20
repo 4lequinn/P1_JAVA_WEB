@@ -1,4 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+:root{
+    --main-color: #0b1e2e;
+    --second-color: #fa2356;
+    --terc-color:#2C394B;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -8,6 +15,7 @@
 
 body{
     position: relative;
+    background: var(--main-color) ! important;
     min-height: 100vh;
     width: 100%;
     overflow: hidden;
@@ -20,7 +28,7 @@ body{
     left: 0;
     height: 100%;
     width: 78px;
-    background: gray;
+    background: var(--second-color);
     padding: 6px 14px;
     transition: all 0.5s ease;
     z-index: 1;
@@ -200,7 +208,7 @@ body{
 
 
 .siderbar.active .profile_content .profile{
-    background: black;
+    background: var(--terc-color);
 }
 
 .profile_content .profile .profile_details{
@@ -258,7 +266,7 @@ body{
 
 .siderbar.active .profile #log_out{
     left: 88%;
-    color: grey;
+    color: var(--second-color) ;
     background: #fff;
 }
 
@@ -332,7 +340,7 @@ body{
 } 
 
 .derecho {
-    background-color: gray;
+    background-color: var(--second-color);
     width: 101.5%;
 }
 
