@@ -28,16 +28,14 @@ public class PerfilJugador  implements java.io.Serializable {
     }
 
 	
-    public PerfilJugador(Integer id, TipoJugador tipoJugador, Usuario usuario, String nombre, String correo, String habilidad) {
-        this.id = id;
+    public PerfilJugador(TipoJugador tipoJugador, Usuario usuario, String nombre, String correo, String habilidad) {
         this.tipoJugador = tipoJugador;
         this.usuario = usuario;
         this.nombre = nombre;
         this.correo = correo;
         this.habilidad = habilidad;
     }
-    public PerfilJugador(Integer id, TipoJugador tipoJugador, Usuario usuario, String nombre, String correo, String habilidad, Set incripcions, Set equipos) {
-       this.id = id;
+    public PerfilJugador(TipoJugador tipoJugador, Usuario usuario, String nombre, String correo, String habilidad, Set incripcions, Set equipos) {
        this.tipoJugador = tipoJugador;
        this.usuario = usuario;
        this.nombre = nombre;

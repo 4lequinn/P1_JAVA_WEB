@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
+        <group>
+            <file>file:/C:/Users/joaco/Desktop/P1_JAVA_WEB/web/registro.jsp</file>
+            <file>file:/C:/Users/joaco/Desktop/P1_JAVA_WEB/src/java/test/TestDetalleDAO.java</file>
+        </group>
+=======
         <group/>
+>>>>>>> c54cb0f82aa7f137b6e71e1e808d1287a5c7804b
     </open-files>
 </project-private>
