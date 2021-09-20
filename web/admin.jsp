@@ -40,13 +40,18 @@
                         <td>John</td>
                         <td>Doe1274</td>
                         <td><a href="#" class="btn btn-primary"><i class="fas fa-shield-alt"></i>Modificar</a>
-                        <a href="#" class="btn btn-danger"><i class="fas fa-shield-alt"></i>Eliminar</a>
+                        <a onclick="confirmDelete()"  class="btn btn-danger"><i class="fas fa-shield-alt"></i>Eliminar</a>
+                        <!-- (<& = x.getId()&> a la función hace falta agregar el ID  -->
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <%@include file="base_footer.jsp" %>
+        <!--Importamos la librería Sweet Alert -->
+        <jsp:include page="includes/cdn-sweet-alert.jsp"></jsp:include>
+        <!-- Importamos el script de formulario -->
+        <script src="static/js/formulario-eliminar.js" ></script>
     </div>
 
 </html>
