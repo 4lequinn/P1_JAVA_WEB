@@ -3,7 +3,13 @@
     Created on : 13-09-2021, 17:58:54
     Author     : Sammy Guergachi <sguergachi at gmail.com>
 --%>
-
+<%
+HttpSession objSession=request.getSession(false);
+String usuario=String.valueOf(objSession.getAttribute("usuario"));
+if("null".equals(usuario)){
+    response.sendRedirect("login.jsp");
+}
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

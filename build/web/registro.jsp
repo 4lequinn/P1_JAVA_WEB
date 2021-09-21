@@ -16,21 +16,39 @@
                             <h2>Registrate</h2>
                         </div>
                     </div>
-                    <form class="col-12" action="{% url 'REG'%}" method="POST">
+                    <form class="col-12" action="ControladorUsuario" method="POST">
                         <div class="form-group" id="name-group">
                             <input class="form-control" type="text" name="txtNombre" id="txtNombre" placeholder="Ingrese un Nombre" value="" required>
                         </div> 
                         <div class="form-group" id="email-group">
                             <input class="form-control" type="email" name="txtCorreo" id="correo" placeholder="Ingrese un Correo" value="">
                         </div>   
+                        <div class="form-group" id="name-group">
+                            <input class="form-control" type="text" name="txtHabilidad" id="txtHabilidad" placeholder="Ingrese su Habilidad" value="" required>
+                        </div> 
+                        <div class="form-group">
+                            <select name="cboTipoJugador" class="form-control">
+                                <option value="1">Estratega</option>
+                                <option value="2">Shooter</option>
+                            </select>    
+                        </div> 
+                         <!--Usuario-->
                         <div class="form-group" id="user-group">
                             <input class="form-control" type="text" name="txtUsuario" id="user" placeholder="Ingrese un Usuario" value="" required>
                         </div>
                         <div class="form-group" id="contrasena-group">
                             <input class="form-control" type="password" name="txtContrasenia" id="passw1" placeholder="Ingrese una Contraseña" value="" required> 
                         </div>
-                        <button type="submit" class="btn btn-primary"><i value="Registrar" class="fas fa-sign-in-alt"></i>  Crea Cuenta </button>
+                        <div class="form-group">
+                            <select name="cboTipoUsuario" class="form-control">
+                                <option value="2">usuario</option>
+                            </select>    
+                        </div> 
+                        <button type="submit" class="btn btn-primary" value="RegistrarUsuario" name="btnAccion" id="btnAccion"><i class="fas fa-sign-in-alt"></i>  Crea Cuenta </button>
                     </form>
+                    <div>
+                        ${msOK}${msNO}
+                    </div>
                 </div>
             </div>
         </div>

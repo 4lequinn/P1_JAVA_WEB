@@ -1,6 +1,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
+<%
+HttpSession objSession=request.getSession(false);
+String usuario=String.valueOf(objSession.getAttribute("usuario"));
+if("null".equals(usuario)){
+    response.sendRedirect("login.jsp");
+}
+%>
 <html>
     <head>
         <%@include file="base_bar.jsp" %>
