@@ -39,8 +39,7 @@
                         </div>
                         <div class="form-group">
                             <select name="cboTipoUsuario" class="form-control">
-                                <option value="1">Administrador</option>
-                                <option value="2">Usuarios</option>
+                                <option value="2">usuario</option>
                             </select>    
                         </div> 
                         <button type="submit" class="btn btn-primary" value="RegistrarUsuario" name="btnAccion" id="btnAccion"><i class="fas fa-sign-in-alt"></i>  Crea Cuenta </button>

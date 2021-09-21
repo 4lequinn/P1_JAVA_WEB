@@ -3,8 +3,12 @@
     Created on : 13-sep-2021, 19:07:19
     Author     : sebas
 --%>
-
+<%@page import="modelo.dao.UsuarioDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%HttpSession objSession2=request.getSession(false);
+UsuarioDAO dao2 = new UsuarioDAO(); 
+String usuario2=(String)objSession2.getAttribute("usuario");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,6 +31,30 @@
             <i class='bx bx-menu' id="btn"></i>
         </div>
         <ul class="nav_list">
+            <%if (dao2.TipoUsuario(usuario2)==0){ %>
+            <li>
+                <a href="index.jsp">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="links_name">Inicio</span>
+                </a>
+                <span class="tooltip">Inicio</span>
+            </li>
+            <li>
+                <a href="registro.jsp">
+                    <i class='bx bx-lock'></i>
+                    <span class="links_name">Registro</span>
+                </a>
+                <span class="tooltip">Registro</span>
+            </li>
+            <li>
+                <a href="login.jsp">
+                    <i class='bx bx-log-in'></i>
+                    <span class="links_name">Inicio Sesion</span>
+                </a>
+                <span class="tooltip">Inicio Sesion</span>
+            </li>
+            <%}%>
+            <%if(dao2.TipoUsuario(usuario2)==1){ %>
             <li>
                 <a href="index.jsp">
                     <i class='bx bx-grid-alt'></i>
@@ -54,21 +82,7 @@
                     <span class="links_name">Equipo</span>
                 </a>
                 <span class="tooltip">Equipo</span>
-            </li>
-            <li>
-                <a href="registro.jsp">
-                    <i class='bx bx-lock'></i>
-                    <span class="links_name">Registro</span>
-                </a>
-                <span class="tooltip">Registro</span>
-            </li>
-            <li>
-                <a href="login.jsp">
-                    <i class='bx bx-log-in'></i>
-                    <span class="links_name">Inicio Sesion</span>
-                </a>
-                <span class="tooltip">Inicio Sesion</span>
-            </li>
+            </li>        
             <li>
                 <a href="admin.jsp">
                     <i class='bx bx-lock'></i>
@@ -76,19 +90,74 @@
                 </a>
                 <span class="tooltip">Admin</span>
             </li>
-        </ul>
-        <div class="profile_content">
+            <div class="profile_content">
             <div class="profile">
                 <div class="profile_details">
                     <img src="static/img/imagen.jpg" alt="">
                     <div class="name_job">
-                        <div class="name">nombre</div>
-                        <div class="job">Web Designer</div>
+                        <div class="name"><% out.println(usuario2);%></div>
+                        <div class="job">Administrador</div>
                     </div>
                 </div>
-                <a href="#"><i class='bx bx-log-out' id="log_out"></i></a>
+                <a href="index.jsp?c=1"><i class='bx bx-log-out' id="log_out"></i></a> 
+                <%if(request.getParameter("c")!=null){
+                    objSession2.invalidate();
+                    response.sendRedirect("index.jsp");
+                    }
+                 %>
             </div>
         </div>
+            <%}%>
+             <%if(dao2.TipoUsuario(usuario2)==2){ %>
+                         <li>
+                <a href="index.jsp">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="links_name">Inicio</span>
+                </a>
+                <span class="tooltip">Inicio</span>
+            </li>
+            <li>
+                <a href="perfil_usuario.jsp">
+                    <i class='bx bxs-id-card'></i>
+                    <span class="links_name">Perfil Jugador</span>
+                </a>
+                <span class="tooltip">Perfil Jugador</span>
+            </li>
+            <li>
+                <a href="liga.jsp">
+                    <i class='bx bx-desktop'></i>
+                    <span class="links_name">Liga</span>
+                </a>
+                <span class="tooltip">Liga</span>
+            </li>
+            <li>
+                <a href="equipo.jsp">
+                    <i class='bx bx-mouse'></i>
+                    <span class="links_name">Equipo</span>
+                </a>
+                <span class="tooltip">Equipo</span>
+            </li>        
+            <div class="profile_content">
+            <div class="profile">
+                <div class="profile_details">
+                    <img src="static/img/imagen.jpg" alt="">
+                    <div class="name_job">
+                        <div class="name"><% out.println(usuario2);%></div>
+                        <div class="job">Usuario</div>
+                    </div>
+                </div>
+                <a href="index.jsp?c=1"><i class='bx bx-log-out' id="log_out"></i></a> 
+                <%if(request.getParameter("c")!=null){
+                    objSession2.invalidate();
+                    response.sendRedirect("index.jsp");
+                    }
+                 %>
+            </div>
+        </div>
+
+             <%}%>
+        </ul>
+        
     </div>
     <script src="static/js/menu.js"></script>
 </body>

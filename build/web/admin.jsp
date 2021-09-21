@@ -3,7 +3,14 @@
     Created on : 13-09-2021, 17:58:54
     Author     : Sammy Guergachi <sguergachi at gmail.com>
 --%>
-
+<%
+UsuarioDAO dao = new UsuarioDAO();
+HttpSession objSession=request.getSession(false);
+String usuario=String.valueOf(objSession.getAttribute("usuario"));
+if("null".equals(usuario) || dao.TipoUsuario(usuario)==2){
+    response.sendRedirect("login.jsp");
+}
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
