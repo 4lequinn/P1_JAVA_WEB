@@ -17,24 +17,24 @@ if("null".equals(usuario) || dao.TipoUsuario(usuario)==2){
     <head>
         <%@include file="base_bar.jsp" %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Administrador</title>
+        <title>Administrar Usuario</title>
     </head>
     <div class="home_content">
         <ul class="nav">
-            <li class="nav-item">
-                <a class="nav-link" href="#">Administrar Usuario</a>
+            <li class="nav-item ">
+                <a class="nav-link" href="admin.jsp">Administrar Usuario</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Administrar Equipo</a>
+                <a class="nav-link" href="admin_equipo.jsp">Administrar Equipo</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Administrar Liga</a>
+                <a class="nav-link" href="admin_liga.jsp">Administrar Liga</a>
             </li>
         </ul>
         <div class="container mt-5">
             <h2>Administrador de Usuario</h2>
-            <table class="table">
-                <thead class="thead-dark">
+            <table class="table ">
+                <thead>
                     <tr>
                         <th><input class="form-control" type="text" name="txtNombre" id="txtNombre" placeholder="Ingrese un Nombre" value="" required></th>
                         <th><input class="form-control" type="text" name="txtContrasenia" id="txtContrasenia" placeholder="Ingrese una contraseña" value="" required></th>
@@ -46,7 +46,7 @@ if("null".equals(usuario) || dao.TipoUsuario(usuario)==2){
         <div class="container mt-5">
             <h2>Lista de Usuario</h2>
             <table class="table">
-                <thead class="thead-dark">
+                <thead>
                     <tr>
                         <th>Usuario</th>
                         <th>Contraseña</th>
@@ -70,6 +70,7 @@ if("null".equals(usuario) || dao.TipoUsuario(usuario)==2){
         <jsp:include page="includes/cdn-sweet-alert.jsp"></jsp:include>
         <!-- Importamos el script de formulario -->
         <script src="static/js/formulario-eliminar.js" ></script>
+        <link rel="stylesheet" href="static/css/admin.css">
     </div>
 
 </html>

@@ -43,5 +43,5 @@ if("null".equals(usuario)){
         </div>
         <%@include file="base_footer.jsp" %>
     </div>
-    <link rel="stylesheet" href="static/css/registro.css">
+    <link rel="stylesheet" href="static/css/perfil.css">
 </html>

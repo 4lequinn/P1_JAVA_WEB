@@ -3,25 +3,18 @@
     Created on : 13-09-2021, 17:58:54
     Author     : Sammy Guergachi <sguergachi at gmail.com>
 --%>
-<%
-UsuarioDAO dao = new UsuarioDAO();
-HttpSession objSession=request.getSession(false);
-String usuario=String.valueOf(objSession.getAttribute("usuario"));
-if("null".equals(usuario) || dao.TipoUsuario(usuario)==2){
-    response.sendRedirect("login.jsp");
-}
-%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <%@include file="base_bar.jsp" %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Administrar Usuario</title>
+        <title>Administrar Equipo</title>
     </head>
     <div class="home_content">
         <ul class="nav">
-            <li class="nav-item ">
+            <li class="nav-item">
                 <a class="nav-link" href="admin.jsp">Administrar Usuario</a>
             </li>
             <li class="nav-item">
@@ -32,9 +25,9 @@ if("null".equals(usuario) || dao.TipoUsuario(usuario)==2){
             </li>
         </ul>
         <div class="container mt-5">
-            <h2>Administrador de Usuario</h2>
-            <table class="table ">
-                <thead>
+            <h2>Administrar Equipo</h2>
+            <table class="table">
+                <thead class="thead">
                     <tr>
                         <th><input class="form-control" type="text" name="txtNombre" id="txtNombre" placeholder="Ingrese un Nombre" value="" required></th>
                         <th><input class="form-control" type="text" name="txtContrasenia" id="txtContrasenia" placeholder="Ingrese una contraseña" value="" required></th>
@@ -44,9 +37,9 @@ if("null".equals(usuario) || dao.TipoUsuario(usuario)==2){
             </table>
         </div>
         <div class="container mt-5">
-            <h2>Lista de Usuario</h2>
+            <h2>Lista de Equipo</h2>
             <table class="table">
-                <thead>
+                <thead class="thead">
                     <tr>
                         <th>Usuario</th>
                         <th>Contraseña</th>
