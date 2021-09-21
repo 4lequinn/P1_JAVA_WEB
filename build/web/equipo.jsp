@@ -16,9 +16,9 @@
         <div class="container mt-5">
             <h3 class="text-left mb-3">Equipo</h3>
             <div class="table-responsive"> 
-                <table class="table table-bordered table-striped">
-                    <thead class="thead-">
-                        <tr class="bg-warning">
+                <table class="table">
+                    <thead>
+                        <tr>
                             <th>Nombre Equipo</th>
                             <th>Cantidad Jugador</th>
                             <th>Solicitud</th>

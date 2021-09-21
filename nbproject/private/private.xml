@@ -4,11 +4,17 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
 <<<<<<< HEAD
         <group>
+
+        </group>
+=======
+<<<<<<< HEAD
+        <group>
             <file>file:/C:/Users/joaco/Desktop/P1_JAVA_WEB/web/registro.jsp</file>
             <file>file:/C:/Users/joaco/Desktop/P1_JAVA_WEB/src/java/test/TestDetalleDAO.java</file>
         </group>
 =======
         <group/>
 >>>>>>> c54cb0f82aa7f137b6e71e1e808d1287a5c7804b
+>>>>>>> 8bb0cd5da7848282f0093c58de9f2dd438e4bb90
     </open-files>
 </project-private>
