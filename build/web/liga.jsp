@@ -17,9 +17,9 @@
         <div class="container mt-5">
             <h3 class="text-left mb-3">Liga</h3>
             <div class="table-responsive"> 
-                <table class="table table-bordered table-striped">
-                    <thead class="thead-">
-                        <tr class="bg-warning">
+                <table class="table">
+                    <thead>
+                        <tr>
                             <th>Nombre Liga</th>
                             <th>Cantidad Equipo</th>
                         </tr>
@@ -35,5 +35,5 @@
         </div>
         <%@include file="base_footer.jsp" %>
     </div>
-    <link rel="stylesheet" href="static/css/liga.css.css">
+    <link rel="stylesheet" href="static/css/liga.css">
 </html>

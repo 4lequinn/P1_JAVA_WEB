@@ -11,10 +11,8 @@
         <div class="modal-dialog text-center " style="z-index: 1;">
             <div class="col-xs-12 col-md-14 main-section">
                 <div class="modal-content">
-                    <div class="col-12 user-img">
-                        <div>
-                            <h2>Registrate</h2>
-                        </div>
+                    <div class="col-12 user-img mt-4">
+                        <h2>Registrate</h2>
                     </div>
                     <form class="col-12" action="ControladorUsuario" method="POST">
                         <div class="form-group" id="name-group">
