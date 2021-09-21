@@ -30,7 +30,7 @@ public class TestUsuarioDAO {
         TipoUsuario tipoUsuario = new TipoUsuario(1);
         Usuario usuario = new Usuario("jorge", tipoUsuario, "ricardomilos");
         UsuarioDAO dao = new UsuarioDAO();
-        
+        System.out.println(dao.TipoUsuario("jorge"));
         // AGREGAR USUARIO
         // OK
 //        if(dao.agregar(usuario)){

@@ -76,7 +76,7 @@ public class ControladorUsuario extends HttpServlet {
             response.sendRedirect("registro.jsp");
         }        
         
-    }
+    }   
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

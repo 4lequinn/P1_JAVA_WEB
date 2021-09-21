@@ -60,7 +60,7 @@ public class UsuarioDAO{
         Usuario usuario = null;
         try {
             conectar();
-            String consulta = "from usuario where usuario = :nombreUsuario";
+            String consulta = "from Usuario where usuario = :nombreUsuario";
             Query query = session.createQuery(consulta);
             // Variable de sustitución
             query.setString("nombreUsuario", nombreUsuario);
@@ -138,5 +138,21 @@ public class UsuarioDAO{
             desconectar();
         }
         return usuario;
+    }
+    public int TipoUsuario(String nombreUsuario) {
+        int respuesta=0;
+        try{
+            Usuario u=buscar(nombreUsuario);
+            if(u.getTipoUsuario().getDescripcion().equalsIgnoreCase("ADMINISTRADOR")){
+                 respuesta=1;
+            }
+            if(u.getTipoUsuario().getDescripcion().equalsIgnoreCase("USUARIO")){
+                respuesta=2;
+            }
+        }catch(Exception e){
+            System.out.println("hola Error");
+             respuesta=0;
+        }   
+       return respuesta;
     }
 }
