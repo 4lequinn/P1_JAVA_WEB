@@ -19,19 +19,36 @@ git status
 // Hacer una confirmación de los archivos subidos con un mensaje
 git commit -m "Version 1"
 
+
 // Elimina los cambios
 git clean -d -f
 
-//
+// Compara nuestros archivos remotos con los locales y nos sincroniza
 git pull
 
 // Subir los cambios al repositorio remoto
 git push origin master
 
+// compara y sube o trae lo del repositorio en la nube y local
+git fetch
+
 // Ver los commits de una rama 
 
 git log --oneline
 
+// volver en el tiempo
+
+git reset --hard identificador
+
+
+
+
+// Crear VERSIONES
+
+git tag version1.0 -m "version 1.0"
+
+// Subir los tags
+git push --tags
 //////////////////////////////////////////
 ////////////// BRANCH
 /////////////////////////////////////////
@@ -67,3 +84,6 @@ git status -s
 
 // Clonar repositorio remoto a tu pc
 git clone https://github.com/4lequinn/app_mobile.git
+
+
+

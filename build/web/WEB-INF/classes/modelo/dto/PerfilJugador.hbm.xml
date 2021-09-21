@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 15-09-2021 23:35:48 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.dto.PerfilJugador" table="perfil_jugador" catalog="liga_videojuegos" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tipoJugador" class="modelo.dto.TipoJugador" fetch="select">
+            <column name="id_tipo_jugador" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuario" class="modelo.dto.Usuario" fetch="select">
+            <column name="id_usuario" length="50" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="80" not-null="true" />
+        </property>
+        <property name="correo" type="string">
+            <column name="correo" length="80" not-null="true" />
+        </property>
+        <property name="habilidad" type="string">
+            <column name="habilidad" length="80" not-null="true" />
+        </property>
+        <set name="incripcions" table="incripcion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_jugador" not-null="true" />
+            </key>
+            <one-to-many class="modelo.dto.Incripcion" />
+        </set>
+        <set name="equipos" table="equipo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_perfil" not-null="true" />
+            </key>
+            <one-to-many class="modelo.dto.Equipo" />
+        </set>
+    </class>
+</hibernate-mapping>
