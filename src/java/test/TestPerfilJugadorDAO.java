@@ -38,7 +38,7 @@ public class TestPerfilJugadorDAO {
         TipoJugador tipoJugador = new TipoJugador(1);
         PerfilJugador perfilJugador = new PerfilJugador(2, tipoJugador, usuario, "Jorge", "lolero.promedio@hotmail.com","Experto en trolearla");
         PerfilJugadorDAO dao = new PerfilJugadorDAO();
-
+        
         //Agregar Perfil
         //OK
 //        if(dao.agregar(perfilJugador)){
