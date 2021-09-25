@@ -1,3 +1,5 @@
+<%@page import="modelo.dto.PerfilJugador"%>
+<%@page import="modelo.dao.PerfilJugadorDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
@@ -23,21 +25,31 @@ if("null".equals(usuario)){
                             <h2>Perfil</h2>
                         </div>
                     </div>
-                    <form class="col-12" action="{% url 'REG'%}" method="POST">
+                    <form class="col-12" action="ControladorUsuario" method="POST">
+                        <%  
+                            PerfilJugadorDAO dao = new PerfilJugadorDAO();
+                            PerfilJugador perfilJugador=dao.buscarPorNombreUsuario(usuario);
+                        %>
+                        <div class="form-group" id="user-group">
+                            <input class="form-control" type="text" name="txtUsuario" id="user" placeholder="Ingrese un Usuario" value="<%=perfilJugador.getUsuario().getUsuario() %>" required="" >
+                        </div>
                         <div class="form-group" id="name-group">
-                            <input class="form-control" type="text" name="txtNombre" id="txtNombre" placeholder="Ingrese un Nombre" value="" required>
+                            <input class="form-control" type="text" name="txtNombre" id="txtNombre" placeholder="Ingrese un Nombre" value="<%=perfilJugador.getNombre() %>" required="">
                         </div> 
                         <div class="form-group" id="email-group">
-                            <input class="form-control" type="email" name="txtCorreo" id="correo" placeholder="Ingrese un Correo" value="">
-                        </div>   
-                        <div class="form-group" id="user-group">
-                            <input class="form-control" type="text" name="txtUsuario" id="user" placeholder="Ingrese un Usuario" value="" required>
+                            <input class="form-control" type="email" name="txtCorreo" id="correo" placeholder="Ingrese un Correo" value="<%=perfilJugador.getCorreo() %>" required="">
                         </div>
-                        <div class="form-group" id="contrasena-group">
-                            <input class="form-control" type="password" name="txtContrasenia" id="passw1" placeholder="Ingrese una Contraseña" value="" required> 
-                        </div>
-                        <button type="submit" class="btn btn-primary"><i value="Registrar" class="fas fa-sign-in-alt"></i>  Editar </button>
+                        <div class="form-group" id="name-group">
+                            <input class="form-control" type="text" name="txtHabilidad" id="txtHabilidad" placeholder="Ingrese su Habilidad" value="<%=perfilJugador.getHabilidad()%>" required="">
+                        </div> 
+                        <div class="form-group">
+                            <select name="cboTipoJugador" class="form-control" disabled="">
+                                <option value="<%=perfilJugador.getTipoJugador().getId() %>"><%=perfilJugador.getTipoJugador().getDescripcion() %> </option>
+                            </select>    
+                        </div> 
+                        <button type="submit" class="btn btn-primary" value="ModificarPerfil" name="btnAccion" id="btnAccion"><i class="fas fa-sign-in-alt"></i>  Editar </button>
                     </form>
+                                
                 </div>
             </div>
         </div>
