@@ -31,6 +31,9 @@ public class ControladorUsuario extends HttpServlet {
          if( opcion.equals("RegistrarUsuario")){
              RegistrarUsuario(request,response);
          }
+         if( opcion.equals("ModificarPerfil")){
+             ModificarPerfil(request,response);
+         }
     }
     protected void Loguear(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -76,7 +79,28 @@ public class ControladorUsuario extends HttpServlet {
             response.sendRedirect("registro.jsp");
         }        
         
-    }   
+    }
+    protected void ModificarPerfil(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+       try{
+           String usuario=request.getParameter("txtUsuario");
+           String nombre=request.getParameter("txtNombre");
+           String correo=request.getParameter("txtCorreo");
+           String habilidad=request.getParameter("txtHabilidad");
+           PerfilJugadorDAO daoP = new PerfilJugadorDAO();
+           if(daoP.Modificar(usuario,nombre,correo,habilidad)){
+               request.getSession().setAttribute("msOK","Usuario modificado correctamente");
+           }
+           else{
+                request.getSession().setAttribute("msNO","El usuario no se ha podido modificar");
+           }
+       }catch(Exception e){
+            request.getSession().setAttribute("msNO","Error:"+e.getMessage());
+            }finally{
+            response.sendRedirect("perfil_usuario.jsp");
+        }        
+        
+    }  
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
