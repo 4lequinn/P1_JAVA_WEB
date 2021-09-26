@@ -45,7 +45,7 @@ public class UsuarioDAO{
         List<Usuario> listaUsuarios = null;
         try {
             conectar();
-            String consulta = "from usuario";
+            String consulta = "from Usuario";
             Query query = session.createQuery(consulta);
             listaUsuarios = query.list();
         } catch (Exception e) {

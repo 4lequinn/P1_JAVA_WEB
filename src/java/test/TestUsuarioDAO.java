@@ -65,10 +65,10 @@ public class TestUsuarioDAO {
         // LISTAR USUARIOS
         // OK
         
-//        List<Usuario> listaUsuarios = dao.listar();
-//        for(Usuario x : listaUsuarios){
-//            System.out.println("Contraseñas : " + x.getContrasenia());
-//        }
+        List<Usuario> listaUsuarios = dao.listar();
+        for(Usuario x : listaUsuarios){
+            System.out.println("Contraseñas : " + x.getContrasenia());
+        }
 
         //LOGIN
         if(dao.Loguear("jorge", "ricardomilos")!=null){

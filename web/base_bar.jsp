@@ -98,7 +98,7 @@
                     <span class="tooltip">Ver solicitudes</span>
                 </li> 
                 <li>
-                    <a href="admin.jsp">
+                    <a href="ControladorAdmin">
                         <i class='bx bx-lock'></i>
                         <span class="links_name">Admin</span>
                     </a>

@@ -3,6 +3,8 @@
     Created on : 13-09-2021, 17:58:54
     Author     : Sammy Guergachi <sguergachi at gmail.com>
 --%>
+
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 UsuarioDAO dao = new UsuarioDAO();
 HttpSession objSession=request.getSession(false);
@@ -22,7 +24,7 @@ if("null".equals(usuario) || dao.TipoUsuario(usuario)==2){
     <div class="home_content">
         <ul class="nav">
             <li class="nav-item ">
-                <a class="nav-link" href="admin.jsp">Administrar Usuario</a>
+                <a class="nav-link" href="ControladorAdmin">Administrar Usuario</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="admin_equipo.jsp">Administrar Equipo</a>
@@ -54,14 +56,16 @@ if("null".equals(usuario) || dao.TipoUsuario(usuario)==2){
                     </tr>
                 </thead>
                 <tbody>
+                    <c:forEach var="x" items="${listaUsuarios}">
                     <tr>
-                        <td>John</td>
-                        <td>Doe1274</td>
+                        <td>${x.getUsuario()}</td>
+                        <td>${x.getContrasenia()}</td>
                         <td><a href="#" class="btn btn-primary"><i class="fas fa-shield-alt"></i>Modificar</a>
                             <a onclick="confirmDelete()"  class="btn btn-danger"><i class="fas fa-shield-alt"></i>Eliminar</a>
                             <!-- (<& = x.getId()&> a la función hace falta agregar el ID  -->
                         </td>
                     </tr>
+                    </c:forEach>
                 </tbody>
             </table>
         </div>
