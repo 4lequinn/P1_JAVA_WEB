@@ -32,14 +32,14 @@
                         <form class="col-12" action="ControladorUsuario" method="POST">
                             <!--Usuario-->
                             <%
-                                Usuario usuario = (Usuario) request.getSession().getAttribute("datosUsuario");
+                                Usuario user = (Usuario) request.getSession().getAttribute("datosUsuario");
                             %>
                             <div class="form-group" id="user-group">
-                                <input class="form-control" type="text" placeholder="Ingrese un Usuario" value="<%= usuario.getUsuario()%>" disabled required>
-                                <input class="form-control" type="text" name="txtUsuario" id="user" placeholder="Ingrese un Usuario" value="<%= usuario.getUsuario()%>" hidden>
+                                <input class="form-control" type="text" placeholder="Ingrese un Usuario" value="<%= user.getUsuario()%>" disabled required>
+                                <input class="form-control" type="text" name="txtUsuario" id="user" placeholder="Ingrese un Usuario" value="<%= user.getUsuario()%>" hidden>
                             </div>
                             <div class="form-group" id="contrasena-group">
-                                <input class="form-control" type="text" name="txtContrasenia" id="passw1" placeholder="Ingrese una Contraseña" value="<%= usuario.getContrasenia()%>" required> 
+                                <input class="form-control" type="text" name="txtContrasenia" id="passw1" placeholder="Ingrese una Contraseña" value="<%= user.getContrasenia()%>" required> 
                             </div>
                             <div class="form-group" id="tipo-group">
                                 <select name="cboTipoJugador" class="form-control">
@@ -48,9 +48,9 @@
                                         for (TipoUsuario x : tipoDAO.listar()) {
                                     %> 
 
-                                    <% if (x.getId() == usuario.getTipoUsuario().getId()) {%>
+                                    <% if (x.getId() == user.getTipoUsuario().getId()) {%>
                                     <option selected value="<%= x.getId()%>"><%= x.getDescripcion()%></option>
-                                    <% } else if (x.getId() != usuario.getTipoUsuario().getId()) {%>
+                                    <% } else if (x.getId() != user.getTipoUsuario().getId()) {%>
                                     <option value="<%= x.getId()%>"><%= x.getDescripcion()%></option>
                                     <%  } %>
 
