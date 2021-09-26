@@ -6,6 +6,14 @@
 <%@page import="modelo.dto.TipoUsuario"%>
 <%@page import="modelo.dao.TipoUsuarioDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    UsuarioDAO dao = new UsuarioDAO();
+    HttpSession objSession = request.getSession(false);
+    String usuario = String.valueOf(objSession.getAttribute("usuario"));
+    if ("null".equals(usuario) || dao.TipoUsuario(usuario) == 2) {
+        response.sendRedirect("login.jsp");
+    }
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,8 +27,7 @@
             <div class="col-xs-12 col-md-14 main-section">
                 <div class="modal-content">
                     <div class="col-12 user-img mt-4">
-                        <h2>Agregar Usuario</h2>
-                    </div>
+                            <h2>Agregar Usuario</h2>
                     <form class="col-12" action="ControladorUsuario" method="POST">
                         <!--Usuario-->
                         <div class="form-group" id="user-group">
@@ -42,10 +49,8 @@
                         </div>
                         <button type="submit" class="btn btn-primary" value="AgregarUsuario" name="btnAccion" id="btnAccion"><i class="fas fa-sign-in-alt"></i>Agregar Usuario</button>
                     </form>
-                    <% if(request.getSession().getAttribute("msj") != null){ %>
-                        <h3>${msj}</h3>
-                    <% }else{  %>
-                        <h3>Nada</h3>
+                    <% if(request.getSession().getAttribute("msja") != null){ %>
+                        <h3>${msja}</h3>
                     <% } %>
                 </div>
             </div>

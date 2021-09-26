@@ -38,7 +38,7 @@
             <table class="table ">
                 <thead>
                     <tr>
-                        <th><a href="#" class="btn btn-success"><i class="fas fa-shield-alt"></i>Agregar</a></th>
+                        <th><a href="ControladorUsuario?opcionUsuario=agregar" class="btn btn-success"><i class="fas fa-shield-alt"></i>Agregar</a></th>
 
                     </tr>
                 </thead>
@@ -51,59 +51,39 @@
                     <tr>
                         <th>Usuario</th>
                         <th>Contraseña</th>
+                        <th>Tipo Usuario</th>
                         <th>Opción</th>
                     </tr>
                 </thead>
                 <tbody>
                     <c:forEach var="x" items="${listaUsuarios}">
-                        <tr>
-                            <td>${x.getUsuario()}</td>
-                            <td>${x.getContrasenia()}</td>
+                    <form method="POST" action="ControladorUsuario">
+                        <tr
+                            <!-- Trucazo -->
+                            <td>${x.getUsuario()}</td> <input value="${x.getUsuario()}" name="txtNomUser" id="txtNomUser" hidden>
+                            <td>${x.getContrasenia()}</td> <input value="${x.getContrasenia()}" name="txtPassUser" id="txtPassUser" hidden>
+                            <td>${x.getTipoUsuario().getDescripcion()}</td> <input value="${x.getTipoUsuario().getId()}" name="txtTipoUser" id="txtTipoUser" hidden>
                             <td>
-                                <a href="#" class="btn btn-primary"><i class="fas fa-shield-alt"></i>Modificar</a>
+                                <button type="submit" class="btn btn-primary" value="cargarDatosUsuario" name="btnAccion" id="btnAccion"><i class="fas fa-sign-in-alt"></i> Modificar 2 </button>
                                 <a href="#" onclick="confirmDelete('${x.getUsuario()}')"  class="btn btn-danger"><i class="fas fa-shield-alt"></i>Eliminar</a>
                             </td>
                         </tr>
-                    </c:forEach>
-                    <%
-                        if (request.getSession().getAttribute("msj") != null) {
-                    %>
+                    </form>
+                </c:forEach>
+                <%
+                    if (request.getSession().getAttribute("msj") != null) {
+                %>
                 <h4>${msj}</h4>
-                <% }%>
+                <% } %>
                 </tbody>
             </table>
-            <!-- MODAL -->
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Launch demo modal
-            </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            ...
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <%@include file="base_footer.jsp" %>
+            <!--Importamos la librería Sweet Alert -->
+            <jsp:include page="includes/cdn-sweet-alert.jsp"></jsp:include>
+            <!-- Importamos el script de formulario -->
+            <script src="static/js/formulario-eliminar.js" ></script>
+            <link rel="stylesheet" href="static/css/admin.css">
         </div>
-        <%@include file="base_footer.jsp" %>
-        <!--Importamos la librería Sweet Alert -->
-        <jsp:include page="includes/cdn-sweet-alert.jsp"></jsp:include>
-        <!-- Importamos el script de formulario -->
-        <script src="static/js/formulario-eliminar.js" ></script>
-        <link rel="stylesheet" href="static/css/admin.css">
-    </div>
 
 
 </html>

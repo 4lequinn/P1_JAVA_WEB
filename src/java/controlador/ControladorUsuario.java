@@ -46,6 +46,12 @@ public class ControladorUsuario extends HttpServlet {
          if(opcion.equalsIgnoreCase("AgregarUsuario")){
              agregarUsuario(request, response);
          }
+         if(opcion.equalsIgnoreCase("cargarDatosUsuario")){
+            cargarDatosUsuario(request, response);
+         }
+         if(opcion.equalsIgnoreCase("ModificarUsuario")){
+             modificarUsuario(request, response);
+         }
     }
     protected void Loguear(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -167,26 +173,70 @@ public class ControladorUsuario extends HttpServlet {
             TipoUsuario tipoUsuario = new TipoUsuario(tipo);
             Usuario u = new Usuario(usuario, tipoUsuario, contrasenia);
             if(dao.agregar(u)){
-                request.getSession().setAttribute("msj", "Agregó!");
+                request.getSession().setAttribute("msja", "Agregó!");
             }else{
-                request.getSession().setAttribute("msj", "No agregó!");
+                request.getSession().setAttribute("msja", "No agregó!");
             }
         } catch (Exception e) {
-            request.getSession().setAttribute("msj", "ERROR");
+            request.getSession().setAttribute("msja", "ERROR");
         }finally{
             response.sendRedirect("agregar-usuario.jsp");
         }
     }
+    
+    protected void modificarUsuario(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException { 
+        try {
+            String usuario=request.getParameter("txtUsuario");
+            String contrasenia=request.getParameter("txtContrasenia");
+            int tipo = Integer.parseInt(request.getParameter("cboTipoJugador"));
+            TipoUsuario tipoUsuario = new TipoUsuario(tipo);
+            Usuario u = new Usuario(usuario, tipoUsuario, contrasenia);
+            if(dao.modificar(u)){
+                request.getSession().setAttribute("msju", "Modificó!");
+            }else{
+                request.getSession().setAttribute("msju", "No Modificó!");
+            }
+        } catch (Exception e) {
+            request.getSession().setAttribute("msju", "ERROR");
+        }finally{
+            response.sendRedirect("modificar-usuario.jsp");
+        }
+    }
+    
+    protected void cargarDatosUsuario(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+        String usuario = request.getParameter("txtNomUser");
+        String contrasenia = request.getParameter("txtPassUser");
+        int tipo = Integer.parseInt(request.getParameter("txtTipoUser"));
+        TipoUsuario tipoUsuario = new TipoUsuario(tipo);
+        Usuario usu = new Usuario(usuario, tipoUsuario, contrasenia);
+        request.getSession().setAttribute("datosUsuario", usu);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }finally{
+            response.sendRedirect("modificar-usuario.jsp");
+        }
+    }
+    
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            //Verificamos si se manda un usuario por GET
-            String usuario = request.getParameter("usuario");
-            eliminarUsuario(request, response);
-        } catch (Exception e) {
+            if(request.getParameter("opcionUsuario") != null){
+                if(request.getParameter("opcionUsuario").equals("agregar")){
+                   request.getRequestDispatcher("agregar-usuario.jsp").forward(request, response);
+                }
+            }else{
+                //Verificamos si se manda un usuario por GET
+                String usuario = request.getParameter("usuario");
+                eliminarUsuario(request, response);
+            }
             
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 
