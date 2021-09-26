@@ -24,6 +24,7 @@ import modelo.dto.Usuario;
 
 public class ControladorUsuario extends HttpServlet {
 
+    UsuarioDAO dao = new UsuarioDAO();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -40,13 +41,15 @@ public class ControladorUsuario extends HttpServlet {
          if( opcion.equals("EnviarSolicitud")){
              EnviarSolicitud(request,response);
          }
+         if(opcion.equalsIgnoreCase("AgregarUsuario")){
+             agregarUsuario(request, response);
+         }
     }
     protected void Loguear(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        try{
            String nombre=request.getParameter("txtUser");
            String contrasena=request.getParameter("txtPass");
-           UsuarioDAO dao = new UsuarioDAO();
            if(dao.Loguear(nombre, contrasena)!=null){
                HttpSession objsesion=request.getSession(true);
                objsesion.setAttribute("usuario", nombre);
@@ -132,11 +135,54 @@ public class ControladorUsuario extends HttpServlet {
         }        
         
     } 
+    
+    protected void eliminarUsuario(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+            String usuario = request.getParameter("usuario");
+            if(dao.eliminar(usuario)){
+                request.getSession().setAttribute("msj", "Usuario " + usuario + " Eliminado!");
+            }else{
+                request.getSession().setAttribute("msj", "No eliminado!");
+            }
+        } catch (Exception e) {
+            request.getSession().setAttribute("msj", "Error");
+        }finally{
+            response.sendRedirect("ControladorAdmin");
+        }
+    
+    }
+    
+    protected void agregarUsuario(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException { 
+        try {
+            String usuario=request.getParameter("txtUsuario");
+            String contrasenia=request.getParameter("txtContrasenia");
+            int tipo = Integer.parseInt(request.getParameter("cboTipoJugador"));
+            TipoUsuario tipoUsuario = new TipoUsuario(tipo);
+            Usuario u = new Usuario(usuario, tipoUsuario, contrasenia);
+            if(dao.agregar(u)){
+                request.getSession().setAttribute("msj", "Agregó!");
+            }else{
+                request.getSession().setAttribute("msj", "No agregó!");
+            }
+        } catch (Exception e) {
+            request.getSession().setAttribute("msj", "ERROR");
+        }finally{
+            response.sendRedirect("agregar-usuario.jsp");
+        }
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            //Verificamos si se manda un usuario por GET
+            String usuario = request.getParameter("usuario");
+            eliminarUsuario(request, response);
+        } catch (Exception e) {
+            
+        }
     }
 
     @Override

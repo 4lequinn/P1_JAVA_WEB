@@ -15,7 +15,7 @@
     <div class="home_content">
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link" href="admin.jsp">Administrar Usuario</a>
+                <a class="nav-link" href="ControladorAdmin">Administrar Usuario</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="admin_equipo.jsp">Administrar Equipo</a>

@@ -5,7 +5,7 @@
  */
 
 
-function confirmDelete(id) {
+function confirmDelete(usuario) {
     Swal.fire({
         icon: 'warning',
         title: '¿Estás Seguro?',
@@ -21,7 +21,7 @@ function confirmDelete(id) {
                     'Usuario Eliminado correctamente',
                     'success'
                     ).then(function () {
-                window.location.href = "../ServletUsuario?codigo=" + id;
+                window.location.href = "ControladorUsuario?usuario=" + (usuario);
             })
         }
     })
