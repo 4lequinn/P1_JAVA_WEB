@@ -38,11 +38,20 @@ if("null".equals(usuario)){
                     <%  EquipoDAO dao = new EquipoDAO();
                         for (Equipo aux:dao.listar()){ %>        
                         <tr>
-                            <th><%=aux.getNombre() %></th>
-                            <th><%=aux.getCantidadJugador()%></th>
-                            <th><%=aux.getLiga().getDescripcion() %></th>
-                            <th><%=aux.getPerfilJugador().getUsuario().getUsuario() %></th>
                             <form action="ControladorUsuario" method="post">
+                            <th>
+                                <input class="form-control" type="number" name="txtIdEquipo" id="txtIdEquipo" value="<%=aux.getId() %>" required="" hidden="">
+                                <%=aux.getNombre() %>
+                            </th>
+                            <th>      
+                                <%=aux.getCantidadJugador()%>
+                            </th>
+                            <th>     
+                                <%=aux.getLiga().getDescripcion() %>
+                            </th>
+                            <th>
+                                <%=aux.getPerfilJugador().getUsuario().getUsuario() %>
+                            </th>
                             <th><button type="submit" class="btn btn-primary" value="EnviarSolicitud" name="btnAccion" id="btnAccion"><i class="fas fa-sign-in-alt"></i>  Enviar solicitud </button></th>
                             </form>
                         </tr>

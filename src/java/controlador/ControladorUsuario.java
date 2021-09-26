@@ -11,9 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import modelo.dao.EquipoDAO;
 import modelo.dao.InscripcionDAO;
 import modelo.dao.PerfilJugadorDAO;
 import modelo.dao.UsuarioDAO;
+import modelo.dto.Equipo;
 import modelo.dto.EstadoSolicitud;
 import modelo.dto.Incripcion;
 import modelo.dto.PerfilJugador;
@@ -113,8 +115,11 @@ public class ControladorUsuario extends HttpServlet {
     protected void EnviarSolicitud(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        try{
+          int idEquipo=Integer.parseInt(request.getParameter("txtIdEquipo"));
+          EquipoDAO daoE = new EquipoDAO();
+          Equipo e = daoE.buscar(idEquipo);
           HttpSession objSession=request.getSession(false);
-          EstadoSolicitud e = new EstadoSolicitud(1);
+          EstadoSolicitud es = new EstadoSolicitud(1);
           String usuario=String.valueOf(objSession.getAttribute("usuario"));
           PerfilJugadorDAO daoP = new PerfilJugadorDAO();
           PerfilJugador p = daoP.buscarPorNombreUsuario(usuario);
@@ -122,7 +127,7 @@ public class ControladorUsuario extends HttpServlet {
           // Arregla esto mukita uwu
           // Dejé el DAO inscripción tuki
           // La bd actualizala 
-          Incripcion i = new Incripcion(e, p);
+          Incripcion i = new Incripcion(e, es,p);
           if(daoI.agregar(i)){
               request.getSession().setAttribute("msOK","Solicitud enviada");
           }else{
