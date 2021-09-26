@@ -24,7 +24,10 @@ public class Incripcion  implements java.io.Serializable {
     public Incripcion(Integer id) {
         this.id = id;
     }
-    
+    public Incripcion(EstadoSolicitud estadoSolicitud, PerfilJugador perfilJugador) {
+        this.estadoSolicitud = estadoSolicitud;
+        this.perfilJugador = perfilJugador;
+    }
     public Incripcion(Integer id, EstadoSolicitud estadoSolicitud, PerfilJugador perfilJugador) {
         this.id = id;
         this.estadoSolicitud = estadoSolicitud;

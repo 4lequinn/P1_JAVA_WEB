@@ -5,7 +5,7 @@
         <%@include file="base_bar.jsp" %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
-        <title>Perfil Usuario</title>
+        <title>Login</title>
     </head>
     <div class="home_content">
         <section>

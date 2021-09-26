@@ -31,7 +31,8 @@ if("null".equals(usuario)){
                             PerfilJugador perfilJugador=dao.buscarPorNombreUsuario(usuario);
                         %>
                         <div class="form-group" id="user-group">
-                            <input class="form-control" type="text" name="txtUsuario" id="user" placeholder="Ingrese un Usuario" value="<%=perfilJugador.getUsuario().getUsuario() %>" required="" >
+                            <input class="form-control" type="text" placeholder="Ingrese un Usuario" value="<%=perfilJugador.getUsuario().getUsuario() %>" required="" disabled="">
+                            <input class="form-control" type="text" name="txtUsuario" id="user" placeholder="Ingrese un Usuario" value="<%=perfilJugador.getUsuario().getUsuario() %>" required="" hidden>
                         </div>
                         <div class="form-group" id="name-group">
                             <input class="form-control" type="text" name="txtNombre" id="txtNombre" placeholder="Ingrese un Nombre" value="<%=perfilJugador.getNombre() %>" required="">

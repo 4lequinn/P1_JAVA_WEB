@@ -37,11 +37,6 @@
                         <div class="form-group" id="contrasena-group">
                             <input class="form-control" type="password" name="txtContrasenia" id="passw1" placeholder="Ingrese una Contraseña" value="" required> 
                         </div>
-                        <div class="form-group">
-                            <select name="cboTipoUsuario" class="form-control">
-                                <option value="2">usuario</option>
-                            </select>    
-                        </div> 
                         <button type="submit" class="btn btn-primary" value="RegistrarUsuario" name="btnAccion" id="btnAccion"><i class="fas fa-sign-in-alt"></i>  Crea Cuenta </button>
                     </form>
                     <div>

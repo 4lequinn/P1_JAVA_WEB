@@ -3,6 +3,8 @@
     Created on : 13-09-2021, 17:58:54
     Author     : Sammy Guergachi <sguergachi at gmail.com>
 --%>
+<%@page import="modelo.dto.Equipo"%>
+<%@page import="modelo.dao.EquipoDAO"%>
 <%
 HttpSession objSession=request.getSession(false);
 String usuario=String.valueOf(objSession.getAttribute("usuario"));
@@ -16,7 +18,7 @@ if("null".equals(usuario)){
     <head>
         <%@include file="base_bar.jsp" %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Registro Usuario</title>
+        <title>Equipo</title>
     </head>
     <div class="home_content">
         <div class="container mt-5">
@@ -27,17 +29,24 @@ if("null".equals(usuario)){
                         <tr>
                             <th>Nombre Equipo</th>
                             <th>Cantidad Jugador</th>
+                            <th>Liga</th>
+                            <th>Dueño</th>
                             <th>Solicitud</th>
                         </tr>
                     </thead>
                     <tbody>
-
+                    <%  EquipoDAO dao = new EquipoDAO();
+                        for (Equipo aux:dao.listar()){ %>        
                         <tr>
-                            <th>{{c.0}}</th>
-                            <th>{{c.1}}</th>
-                            <th><a href="#" class="btn btn-primary"><i class="fas fa-shield-alt"></i>Enviar Solicitud</a></th>
+                            <th><%=aux.getNombre() %></th>
+                            <th><%=aux.getCantidadJugador()%></th>
+                            <th><%=aux.getLiga().getDescripcion() %></th>
+                            <th><%=aux.getPerfilJugador().getUsuario().getUsuario() %></th>
+                            <form action="ControladorUsuario" method="post">
+                            <th><button type="submit" class="btn btn-primary" value="EnviarSolicitud" name="btnAccion" id="btnAccion"><i class="fas fa-sign-in-alt"></i>  Enviar solicitud </button></th>
+                            </form>
                         </tr>
-
+                    <% }%>
                     </tbody>
                 </table>
             </div>

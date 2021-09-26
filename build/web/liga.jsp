@@ -3,6 +3,8 @@
     Created on : 13-09-2021, 17:58:54
     Author     : Sammy Guergachi <sguergachi at gmail.com>
 --%>
+<%@page import="modelo.dto.Liga"%>
+<%@page import="modelo.dao.LigaDAO"%>
 <%
 HttpSession objSession=request.getSession(false);
 String usuario=String.valueOf(objSession.getAttribute("usuario"));
@@ -26,15 +28,20 @@ if("null".equals(usuario)){
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Nombre Liga</th>
-                            <th>Cantidad Equipo</th>
+                            <th>Nombre de la Liga</th>
+                            <th>Cantidad de Equipo</th>
+                            <th>Videojuego</th>
                         </tr>
                     </thead>
                     <tbody>
+                    <%  LigaDAO dao = new LigaDAO();
+                        for (Liga aux:dao.listar()){ %>        
                         <tr>
-                            <th>{{c.0}}</th>
-                            <th>{{c.1}}</th>
+                            <th><%=aux.getDescripcion() %></th>
+                            <th><%=aux.getCantidadEquipo()%></th>
+                            <th><%=aux.getVideoJuego().getNombre() %></th>
                         </tr>
+                    <% }%>
                     </tbody>
                 </table>
             </div>

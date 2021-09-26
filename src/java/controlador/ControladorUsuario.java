@@ -11,8 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import modelo.dao.InscripcionDAO;
 import modelo.dao.PerfilJugadorDAO;
 import modelo.dao.UsuarioDAO;
+import modelo.dto.EstadoSolicitud;
+import modelo.dto.Incripcion;
 import modelo.dto.PerfilJugador;
 import modelo.dto.TipoJugador;
 import modelo.dto.TipoUsuario;
@@ -33,6 +36,9 @@ public class ControladorUsuario extends HttpServlet {
          }
          if( opcion.equals("ModificarPerfil")){
              ModificarPerfil(request,response);
+         }
+         if( opcion.equals("EnviarSolicitud")){
+             EnviarSolicitud(request,response);
          }
     }
     protected void Loguear(HttpServletRequest request, HttpServletResponse response)
@@ -58,7 +64,7 @@ public class ControladorUsuario extends HttpServlet {
        try{
            String usuario=request.getParameter("txtUsuario");
            String contrasenia=request.getParameter("txtContrasenia");
-           TipoUsuario tipoUsuario=new TipoUsuario(Integer.parseInt(request.getParameter("cboTipoUsuario")));
+           TipoUsuario tipoUsuario=new TipoUsuario(2);
            Usuario u =new Usuario(usuario,tipoUsuario,contrasenia);
            UsuarioDAO daoU = new UsuarioDAO();
            String nombre=request.getParameter("txtNombre");
@@ -100,7 +106,29 @@ public class ControladorUsuario extends HttpServlet {
             response.sendRedirect("perfil_usuario.jsp");
         }        
         
-    }  
+    }
+    protected void EnviarSolicitud(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+       try{
+          HttpSession objSession=request.getSession(false);
+          EstadoSolicitud e = new EstadoSolicitud(1);
+          String usuario=String.valueOf(objSession.getAttribute("usuario"));
+          PerfilJugadorDAO daoP = new PerfilJugadorDAO();
+          PerfilJugador p = daoP.buscarPorNombreUsuario(usuario);
+          InscripcionDAO daoI = new InscripcionDAO();
+          Incripcion i = new Incripcion(e, p);
+          if(daoI.agregar(i)){
+              request.getSession().setAttribute("msOK","Solicitud enviada");
+          }else{
+                request.getSession().setAttribute("msNO","La solicitud no se ha podido enviar");
+           }
+       }catch(Exception e){
+            request.getSession().setAttribute("msNO","Error:"+e.getMessage());
+            }finally{
+            response.sendRedirect("equipo.jsp");
+        }        
+        
+    } 
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

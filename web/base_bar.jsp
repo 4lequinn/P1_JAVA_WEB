@@ -89,7 +89,14 @@
                         <span class="links_name">Crear Equipo</span>
                     </a>
                     <span class="tooltip">Crear Equipo</span>
-                </li>      
+                </li> 
+                <li>
+                    <a href="ver_solicitud.jsp">
+                        <i class='bx bx-search'></i>
+                        <span class="links_name">Ver solicitudes</span>
+                    </a>
+                    <span class="tooltip">Ver solicitudes</span>
+                </li> 
                 <li>
                     <a href="admin.jsp">
                         <i class='bx bx-lock'></i>
@@ -138,19 +145,26 @@
                     <span class="tooltip">Liga</span>
                 </li>
                 <li>
-                    <a href="crear_equipo.jsp">
-                        <i class='bx bx-group'></i>
-                        <span class="links_name">Crear Equipo</span>
-                    </a>
-                    <span class="tooltip">Crear Equipo</span>
-                </li>    
-                <li>
                     <a href="equipo.jsp">
                         <i class='bx bx-mouse'></i>
                         <span class="links_name">Equipo</span>
                     </a>
                     <span class="tooltip">Equipo</span>
-                </li>        
+                </li>   
+                <li>
+                    <a href="crear_equipo.jsp">
+                        <i class='bx bx-group'></i>
+                        <span class="links_name">Crear Equipo</span>
+                    </a>
+                    <span class="tooltip">Crear Equipo</span>
+                </li> 
+                                <li>
+                    <a href="ver_solicitud.jsp">
+                        <i class='bx bx-search'></i>
+                        <span class="links_name">Ver solicitudes</span>
+                    </a>
+                    <span class="tooltip">Ver solicitudes</span>
+                </li> 
                 <div class="profile_content">
                     <div class="profile">
                         <div class="profile_details">
