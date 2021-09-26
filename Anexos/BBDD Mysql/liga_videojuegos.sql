@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-09-2021 a las 04:24:22
+-- Tiempo de generación: 26-09-2021 a las 10:01:41
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 7.3.29
 
@@ -35,6 +35,43 @@ CREATE TABLE `detalle_equipo` (
   `id_equipo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Disparadores `detalle_equipo`
+--
+DELIMITER $$
+CREATE TRIGGER `TRG_VALIDAR_EQUIPO_DELETE` AFTER DELETE ON `detalle_equipo` FOR EACH ROW BEGIN
+    declare v_cantidad int;
+	SELECT cantidad_jugador into v_cantidad from equipo where id = old.id_equipo;
+	UPDATE equipo SET cantidad_jugador = cantidad_jugador - 1 WHERE id = old.id_equipo;
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `TRG_VALIDAR_EQUIPO_INSERT` BEFORE INSERT ON `detalle_equipo` FOR EACH ROW BEGIN
+    declare v_cantidad int;
+	SELECT cantidad_jugador into v_cantidad from equipo where id = new.id_equipo;
+    IF v_cantidad < 8 THEN
+		UPDATE equipo set cantidad_jugador = cantidad_jugador + 1 where id = new.id_equipo;
+    else
+		SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'ERROR EL EQUIPO ESTÁ COMPLETO';
+    END IF;
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `TRG_VALIDAR_EQUIPO_UPDATE` BEFORE UPDATE ON `detalle_equipo` FOR EACH ROW BEGIN
+    declare v_cantidad int;
+	SELECT cantidad_jugador into v_cantidad from equipo where id = new.id_equipo;
+    IF v_cantidad < 8 THEN
+		UPDATE equipo set cantidad_jugador = cantidad_jugador + 1 where id = new.id_equipo;
+        UPDATE equipo set cantidad_jugador = cantidad_jugador - 1 WHERE id = old.id_equipo;
+    else
+		SIGNAL SQLSTATE '45001' SET MESSAGE_TEXT = 'ERROR EL EQUIPO ESTÁ COMPLETO';
+    END IF;
+END
+$$
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
@@ -49,6 +86,43 @@ CREATE TABLE `equipo` (
   `id_perfil` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Disparadores `equipo`
+--
+DELIMITER $$
+CREATE TRIGGER `TRG_VALIDAR_LIGA_DELETE` AFTER DELETE ON `equipo` FOR EACH ROW BEGIN
+    declare v_cantidad int;
+	SELECT cantidad_equipo into v_cantidad from liga where id = old.id_liga;
+	UPDATE liga SET cantidad_equipo = cantidad_equipo - 1 WHERE id = old.id_liga;
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `TRG_VALIDAR_LIGA_INSERT` BEFORE INSERT ON `equipo` FOR EACH ROW BEGIN
+    declare v_cantidad int;
+	SELECT cantidad_equipo into v_cantidad from liga where id = new.id_liga;
+    IF v_cantidad < 16 THEN
+		UPDATE liga set cantidad_equipo = cantidad_equipo + 1 where id = new.id_liga;
+    else
+		SIGNAL SQLSTATE '45004' SET MESSAGE_TEXT = 'ERROR LA LIGA ESTÁ COMPLETA';
+    END IF;
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `TRG_VALIDAR_LIGA_UPDATE` BEFORE UPDATE ON `equipo` FOR EACH ROW BEGIN
+    declare v_cantidad int;
+	SELECT cantidad_equipo into v_cantidad from liga where id = new.id_liga;
+    IF v_cantidad < 16 THEN
+		UPDATE liga set cantidad_equipo = cantidad_equipo + 1 where id = new.id_liga;
+        UPDATE liga set cantidad_equipo = cantidad_equipo - 1 WHERE id = old.id_liga;
+    else
+		SIGNAL SQLSTATE '45005' SET MESSAGE_TEXT = 'ERROR LA LIGA ESTÁ COMPLETA';
+    END IF;
+END
+$$
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
@@ -60,6 +134,15 @@ CREATE TABLE `estado_solicitud` (
   `descripcion` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `estado_solicitud`
+--
+
+INSERT INTO `estado_solicitud` (`id`, `descripcion`) VALUES
+(1, 'PENDIENTE'),
+(2, 'ACEPTADA'),
+(3, 'RECHAZADA');
+
 -- --------------------------------------------------------
 
 --
@@ -70,7 +153,8 @@ CREATE TABLE `incripcion` (
   `id` int(11) NOT NULL,
   `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
   `id_estado` int(11) NOT NULL,
-  `id_jugador` int(11) NOT NULL
+  `id_jugador` int(11) NOT NULL,
+  `id_equipo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -85,6 +169,13 @@ CREATE TABLE `liga` (
   `cantidad_equipo` int(11) NOT NULL,
   `id_juego` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `liga`
+--
+
+INSERT INTO `liga` (`id`, `descripcion`, `cantidad_equipo`, `id_juego`) VALUES
+(1, 'LIGA DE LOS MUCAS', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -101,6 +192,16 @@ CREATE TABLE `perfil_jugador` (
   `id_usuario` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `perfil_jugador`
+--
+
+INSERT INTO `perfil_jugador` (`id`, `nombre`, `correo`, `habilidad`, `id_tipo_jugador`, `id_usuario`) VALUES
+(1, 'Jorgito', 'jorgitoxd@gmail.com', '0 skill', 2, 'ricardito69xd'),
+(2, 'maty', 'maty@gmail.com', 'ninguna', 1, 'maty'),
+(3, 'ricardo', 'ricardo@gmail.com', 'ninguna', 1, 'ricardouwu'),
+(4, 'joaco', 'joacoxdd@gmail.com', '100 skill xd', 2, 'joaco');
+
 -- --------------------------------------------------------
 
 --
@@ -112,6 +213,14 @@ CREATE TABLE `tipo_jugador` (
   `descripcion` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `tipo_jugador`
+--
+
+INSERT INTO `tipo_jugador` (`id`, `descripcion`) VALUES
+(1, 'ESTRATEGA'),
+(2, 'SHOOTER');
+
 -- --------------------------------------------------------
 
 --
@@ -122,6 +231,14 @@ CREATE TABLE `tipo_usuario` (
   `id` int(11) NOT NULL,
   `descripcion` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tipo_usuario`
+--
+
+INSERT INTO `tipo_usuario` (`id`, `descripcion`) VALUES
+(1, 'ADMINISTRADOR'),
+(2, 'USUARIO');
 
 -- --------------------------------------------------------
 
@@ -135,6 +252,18 @@ CREATE TABLE `usuario` (
   `id_tipo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`usuario`, `contrasenia`, `id_tipo`) VALUES
+('joaco', 'joaco', 2),
+('jorge', 'ricardomilos', 1),
+('jorgito', 'prueba', 1),
+('maty', 'maty', 2),
+('ricardito69xd', 'ojitomaster', 1),
+('ricardouwu', 'ricardouwu', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -146,6 +275,16 @@ CREATE TABLE `video_juego` (
   `nombre` varchar(80) NOT NULL,
   `tipo_juego` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `video_juego`
+--
+
+INSERT INTO `video_juego` (`id`, `nombre`, `tipo_juego`) VALUES
+(1, 'LEAGUE OF LEGENDS', 'MOBA BATTLE ARENA'),
+(2, 'APEX LEGENDS', 'BATTLE ROYALE'),
+(3, 'COUNTER STRIKE GLOBAL OFFENSIVE', 'SHOOTER'),
+(4, 'FIFA 22', 'EA SPORTS');
 
 --
 -- Índices para tablas volcadas
@@ -179,7 +318,8 @@ ALTER TABLE `estado_solicitud`
 ALTER TABLE `incripcion`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_jugador` (`id_jugador`),
-  ADD KEY `id_estado` (`id_estado`);
+  ADD KEY `id_estado` (`id_estado`),
+  ADD KEY `id_equipo` (`id_equipo`);
 
 --
 -- Indices de la tabla `liga`
@@ -241,7 +381,7 @@ ALTER TABLE `equipo`
 -- AUTO_INCREMENT de la tabla `estado_solicitud`
 --
 ALTER TABLE `estado_solicitud`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `incripcion`
@@ -253,31 +393,31 @@ ALTER TABLE `incripcion`
 -- AUTO_INCREMENT de la tabla `liga`
 --
 ALTER TABLE `liga`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `perfil_jugador`
 --
 ALTER TABLE `perfil_jugador`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_jugador`
 --
 ALTER TABLE `tipo_jugador`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_usuario`
 --
 ALTER TABLE `tipo_usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `video_juego`
 --
 ALTER TABLE `video_juego`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
@@ -302,7 +442,8 @@ ALTER TABLE `equipo`
 --
 ALTER TABLE `incripcion`
   ADD CONSTRAINT `incripcion_ibfk_1` FOREIGN KEY (`id_jugador`) REFERENCES `perfil_jugador` (`id`),
-  ADD CONSTRAINT `incripcion_ibfk_2` FOREIGN KEY (`id_estado`) REFERENCES `estado_solicitud` (`id`);
+  ADD CONSTRAINT `incripcion_ibfk_2` FOREIGN KEY (`id_estado`) REFERENCES `estado_solicitud` (`id`),
+  ADD CONSTRAINT `incripcion_ibfk_3` FOREIGN KEY (`id_equipo`) REFERENCES `equipo` (`id`);
 
 --
 -- Filtros para la tabla `liga`
@@ -322,42 +463,6 @@ ALTER TABLE `perfil_jugador`
 --
 ALTER TABLE `usuario`
   ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_tipo`) REFERENCES `tipo_usuario` (`id`);
-
-
---
--- TIPOS DE USUARIO
---
-
-INSERT INTO TIPO_USUARIO VALUES (1,'ADMINISTRADOR');
-INSERT INTO TIPO_USUARIO VALUES (2,'USUARIO');
-
---
--- TIPOS DE JUGADOR 
---
-INSERT INTO TIPO_JUGADOR VALUES (1, 'ESTRATEGA');
-INSERT INTO TIPO_JUGADOR VALUES (2, 'SHOOTER');
-
---
--- ESTADOS DE SOLICITUD
---
-INSERT INTO ESTADO_SOLICITUD VALUES (1,'PENDIENTE');
-INSERT INTO ESTADO_SOLICITUD VALUES (2,'ACEPTADA');
-INSERT INTO ESTADO_SOLICITUD VALUES (3,'RECHAZADA');
-
---
--- VIDEO JUEGOS
---
-INSERT INTO VIDEO_JUEGO VALUES (1, 'LEAGUE OF LEGENDS','MOBA BATTLE ARENA');
-INSERT INTO VIDEO_JUEGO VALUES (2, 'APEX LEGENDS','BATTLE ROYALE');
-INSERT INTO VIDEO_JUEGO VALUES (3, 'COUNTER STRIKE GLOBAL OFFENSIVE','SHOOTER');
-INSERT INTO VIDEO_JUEGO VALUES (4, 'FIFA 22','EA SPORTS');
-
---
--- LIGAS
---
-INSERT INTO LIGA VALUES (1, 'LIGA DE LOS MUCAS', 0, 1);
-
-
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
