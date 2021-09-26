@@ -41,9 +41,8 @@ public class TestEquipoDAO {
         Usuario usuario = new Usuario( "Jorge", tipoUsuario, "Ricardo Milos 69");
         TipoJugador tipoJugador = new TipoJugador(1);
         PerfilJugador perfilJugador = new PerfilJugador(1, tipoJugador, usuario, "Jorge", "lolero.promedio@hotmail.com","Experto en trolearla");
-        Incripcion inscripcion = new Incripcion(2, estadoSolicitud, perfilJugador);
         Equipo equipo = new Equipo(1, liga, perfilJugador, "Team Mukita", 1);
-        
+        Incripcion inscripcion = new Incripcion(equipo, estadoSolicitud, perfilJugador);
         
         //Agregar Equipo
         //OK

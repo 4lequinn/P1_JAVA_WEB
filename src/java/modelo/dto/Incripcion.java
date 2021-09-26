@@ -1,5 +1,5 @@
 package modelo.dto;
-// Generated 15-09-2021 23:35:47 by Hibernate Tools 4.3.1
+// Generated 26-09-2021 5:28:29 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -13,6 +13,7 @@ public class Incripcion  implements java.io.Serializable {
 
 
      private Integer id;
+     private Equipo equipo;
      private EstadoSolicitud estadoSolicitud;
      private PerfilJugador perfilJugador;
      private Date fecha;
@@ -24,17 +25,24 @@ public class Incripcion  implements java.io.Serializable {
     public Incripcion(Integer id) {
         this.id = id;
     }
-    public Incripcion(EstadoSolicitud estadoSolicitud, PerfilJugador perfilJugador) {
-        this.estadoSolicitud = estadoSolicitud;
-        this.perfilJugador = perfilJugador;
-    }
-    public Incripcion(Integer id, EstadoSolicitud estadoSolicitud, PerfilJugador perfilJugador) {
+
+    public Incripcion(Integer id, Equipo equipo, EstadoSolicitud estadoSolicitud, PerfilJugador perfilJugador, Date fecha) {
         this.id = id;
+        this.equipo = equipo;
+        this.estadoSolicitud = estadoSolicitud;
+        this.perfilJugador = perfilJugador;
+        this.fecha = fecha;
+    }
+    
+    public Incripcion(Equipo equipo, EstadoSolicitud estadoSolicitud, PerfilJugador perfilJugador) {
+        this.equipo = equipo;
         this.estadoSolicitud = estadoSolicitud;
         this.perfilJugador = perfilJugador;
     }
-    public Incripcion(Integer id, EstadoSolicitud estadoSolicitud, PerfilJugador perfilJugador, Set detalleEquipos) {
-       this.id = id;
+	
+    
+    public Incripcion(Equipo equipo, EstadoSolicitud estadoSolicitud, PerfilJugador perfilJugador, Set detalleEquipos) {
+       this.equipo = equipo;
        this.estadoSolicitud = estadoSolicitud;
        this.perfilJugador = perfilJugador;
        this.detalleEquipos = detalleEquipos;
@@ -46,6 +54,13 @@ public class Incripcion  implements java.io.Serializable {
     
     public void setId(Integer id) {
         this.id = id;
+    }
+    public Equipo getEquipo() {
+        return this.equipo;
+    }
+    
+    public void setEquipo(Equipo equipo) {
+        this.equipo = equipo;
     }
     public EstadoSolicitud getEstadoSolicitud() {
         return this.estadoSolicitud;

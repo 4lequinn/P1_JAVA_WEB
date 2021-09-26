@@ -116,6 +116,9 @@ public class ControladorUsuario extends HttpServlet {
           PerfilJugadorDAO daoP = new PerfilJugadorDAO();
           PerfilJugador p = daoP.buscarPorNombreUsuario(usuario);
           InscripcionDAO daoI = new InscripcionDAO();
+          // Arregla esto mukita uwu
+          // Dejé el DAO inscripción tuki
+          // La bd actualizala 
           Incripcion i = new Incripcion(e, p);
           if(daoI.agregar(i)){
               request.getSession().setAttribute("msOK","Solicitud enviada");

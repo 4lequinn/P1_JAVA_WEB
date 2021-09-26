@@ -49,15 +49,15 @@ Contributor(s):
     <property name="hibernate.hbm2ddl.auto">validate</property>
     <!-- Esta propiedad permite mapear las tablas foráneas -->
     <property name="hibernate.enable_lazy_load_no_trans">true</property>
-    <mapping resource="modelo/dto/TipoUsuario.hbm.xml"/>
-    <mapping resource="modelo/dto/Liga.hbm.xml"/>
-    <mapping resource="modelo/dto/DetalleEquipo.hbm.xml"/>
-    <mapping resource="modelo/dto/Usuario.hbm.xml"/>
-    <mapping resource="modelo/dto/Incripcion.hbm.xml"/>
-    <mapping resource="modelo/dto/TipoJugador.hbm.xml"/>
-    <mapping resource="modelo/dto/Equipo.hbm.xml"/>
-    <mapping resource="modelo/dto/PerfilJugador.hbm.xml"/>
     <mapping resource="modelo/dto/EstadoSolicitud.hbm.xml"/>
+    <mapping resource="modelo/dto/PerfilJugador.hbm.xml"/>
+    <mapping resource="modelo/dto/DetalleEquipo.hbm.xml"/>
     <mapping resource="modelo/dto/VideoJuego.hbm.xml"/>
+    <mapping resource="modelo/dto/Incripcion.hbm.xml"/>
+    <mapping resource="modelo/dto/Equipo.hbm.xml"/>
+    <mapping resource="modelo/dto/TipoUsuario.hbm.xml"/>
+    <mapping resource="modelo/dto/Usuario.hbm.xml"/>
+    <mapping resource="modelo/dto/TipoJugador.hbm.xml"/>
+    <mapping resource="modelo/dto/Liga.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

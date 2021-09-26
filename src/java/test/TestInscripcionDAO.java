@@ -8,12 +8,15 @@ package test;
 import java.util.List;
 import javax.swing.JOptionPane;
 import modelo.dao.InscripcionDAO;
+import modelo.dto.Equipo;
 import modelo.dto.EstadoSolicitud;
 import modelo.dto.Incripcion;
+import modelo.dto.Liga;
 import modelo.dto.PerfilJugador;
 import modelo.dto.TipoJugador;
 import modelo.dto.TipoUsuario;
 import modelo.dto.Usuario;
+import modelo.dto.VideoJuego;
 
 /**
  * 
@@ -31,12 +34,13 @@ public class TestInscripcionDAO {
         /////////////////////////////////////////////////
         
         
-        EstadoSolicitud estadoSolicitud = new EstadoSolicitud(2);
+        EstadoSolicitud estadoSolicitud = new EstadoSolicitud(1);
         TipoUsuario tipoUsuario = new TipoUsuario(2);
         Usuario usuario = new Usuario("Jorge", tipoUsuario,"Ricardo Milos 69");
         TipoJugador tipoJugador = new TipoJugador(1);
         PerfilJugador perfilJugador = new PerfilJugador(1, tipoJugador, usuario, "Jorge", "lolero.promedio@hotmail.com","Experto en trolearla");
-        Incripcion inscripcion = new Incripcion(2, estadoSolicitud, perfilJugador);
+        Equipo equipo = new Equipo(1);
+        Incripcion inscripcion = new Incripcion(equipo, estadoSolicitud, perfilJugador);
         InscripcionDAO dao = new InscripcionDAO();
 
         // Agregar Inscripción

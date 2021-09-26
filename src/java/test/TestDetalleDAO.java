@@ -41,10 +41,10 @@ public class TestDetalleDAO {
         Usuario usuario = new Usuario("Jorge", tipoUsuario,  "Ricardo Milos 69");
         TipoJugador tipoJugador = new TipoJugador(1);
         PerfilJugador perfilJugador = new PerfilJugador(tipoJugador, usuario, "Jorge", "lolero.promedio@hotmail.com","Experto en trolearla");
-        Incripcion inscripcion = new Incripcion(2, estadoSolicitud, perfilJugador);
-        Equipo equipo = new Equipo(2, liga, perfilJugador, "Team Mukita", 1);
+        Equipo equipo = new Equipo(1, liga, perfilJugador, "Team Mukita", 1);
+        Incripcion inscripcion = new Incripcion(1);
         DetalleEquipoDAO dao = new DetalleEquipoDAO();
-        DetalleEquipo detalleEquipo = new DetalleEquipo(2,equipo, inscripcion);
+        DetalleEquipo detalleEquipo = new DetalleEquipo(1,equipo, inscripcion);
         
         // AGREGAR Detalle
         // OK 

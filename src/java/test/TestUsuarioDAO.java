@@ -28,9 +28,8 @@ public class TestUsuarioDAO {
         /////////////////////////////////////////////////
         
         TipoUsuario tipoUsuario = new TipoUsuario(1);
-        Usuario usuario = new Usuario("jorge", tipoUsuario, "ricardomilos");
+        Usuario usuario = new Usuario("uwu", tipoUsuario, "uwu");
         UsuarioDAO dao = new UsuarioDAO();
-        System.out.println(dao.TipoUsuario("jorge"));
         // AGREGAR USUARIO
         // OK
 //        if(dao.agregar(usuario)){
@@ -65,17 +64,17 @@ public class TestUsuarioDAO {
         // LISTAR USUARIOS
         // OK
         
-        List<Usuario> listaUsuarios = dao.listar();
-        for(Usuario x : listaUsuarios){
-            System.out.println("Contraseñas : " + x.getContrasenia());
-        }
+//        List<Usuario> listaUsuarios = dao.listar();
+//        for(Usuario x : listaUsuarios){
+//            System.out.println("Contraseñas : " + x.getContrasenia());
+//        }
 
         //LOGIN
-        if(dao.Loguear("jorge", "ricardomilos")!=null){
-            System.out.println("Existe");
-        }else{
-            System.out.println("No existe");
-        }
+//        if(dao.Loguear("jorge", "ricardomilos")!=null){
+//            System.out.println("Existe");
+//        }else{
+//            System.out.println("No existe");
+//        }
 
     }
 }
