@@ -50,6 +50,8 @@
                     <tr>
                         <th>Descripción</th>
                         <th>Video Juego</th>
+                        <th>Cantidad de Equipos</th>
+                        <th>Cupos</th>
                         <th>Opción</th>
                     </tr>
                 </thead>
@@ -60,6 +62,8 @@
                         <tr>
                             <td>${x.getDescripcion()}</td>
                             <td>${x.getVideoJuego().getNombre()}</td>
+                            <td>${x.getCantidadEquipo()}</td>
+                            <td>${16 - x.getCantidadEquipo()}</td>
                             <td>
                                 <a href="#" class="btn btn-primary"><i class="fas fa-shield-alt"></i>Modificar</a>
                                 <a onclick="eliminarLiga(${x.getId()})"  class="btn btn-danger"><i class="fas fa-shield-alt"></i>Eliminar</a>

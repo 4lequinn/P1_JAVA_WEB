@@ -4,7 +4,16 @@
     Author     : jorge
 --%>
 
+<%@page import="modelo.dao.UsuarioDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    UsuarioDAO dao = new UsuarioDAO();
+    HttpSession objSession = request.getSession(false);
+    String usuario = String.valueOf(objSession.getAttribute("usuario"));
+    if ("null".equals(usuario) || dao.TipoUsuario(usuario) == 2) {
+        response.sendRedirect("login.jsp");
+    }
+%>
 <!DOCTYPE html>
 <html>
     <head>

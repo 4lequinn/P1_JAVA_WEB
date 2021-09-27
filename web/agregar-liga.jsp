@@ -4,6 +4,7 @@
     Author     : jorge
 --%>
 
+<%@page import="modelo.dao.UsuarioDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     UsuarioDAO dao = new UsuarioDAO();
