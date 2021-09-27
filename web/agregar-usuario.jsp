@@ -28,6 +28,7 @@
                 <div class="modal-content">
                     <div class="col-12 user-img mt-4">
                             <h2>Agregar Usuario</h2>
+                            
                     <form class="col-12" action="ControladorUsuario" method="POST">
                         <!--Usuario-->
                         <div class="form-group" id="user-group">

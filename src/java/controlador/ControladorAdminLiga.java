@@ -23,6 +23,7 @@ public class ControladorAdminLiga extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
     }
     
     protected void eliminarLiga(HttpServletRequest request, HttpServletResponse response)

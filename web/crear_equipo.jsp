@@ -23,6 +23,7 @@
 
                         <div class="form-group" required>
                             <select name="cboLiga" class="form-control">
+                                <option selected disabled >Seleccione una liga</option>
                                 <% 
                                     LigaDAO Liga = new LigaDAO();
                                     for(Liga x: Liga.listar()){

@@ -6,12 +6,12 @@
 package controlador;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.dao.EquipoDAO;
+
 
 /**
  *
@@ -22,6 +22,34 @@ public class ControladorAdminEquipo extends HttpServlet {
     EquipoDAO dao = new EquipoDAO();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String opcion=request.getParameter("btnAccion");
+        if(opcion.equalsIgnoreCase("CargarDatosEquipo")){
+             cargarDatosEquipo(request, response);
+        }
+        if(opcion.equalsIgnoreCase("ModificarEquipo")){
+             modificarEquipo(request, response);
+         }
+    }
+    
+    protected void cargarDatosEquipo(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+            // Lo terminaré luego
+        String usuario = request.getParameter("txtNomUser");
+        String contrasenia = request.getParameter("txtPassUser");
+        int tipo = Integer.parseInt(request.getParameter("txtTipoUser"));
+        TipoUsuario tipoUsuario = new TipoUsuario(tipo);
+        Usuario usu = new Usuario(usuario, tipoUsuario, contrasenia);
+        request.getSession().setAttribute("datosUsuario", usu);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }finally{
+            response.sendRedirect("modificar-usuario.jsp");
+        }
+    }
+        
+    protected void modificarEquipo(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     }
 
@@ -40,6 +68,7 @@ public class ControladorAdminEquipo extends HttpServlet {
             response.sendRedirect("ControladorAdminEquipo");
         }
     }
+    
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

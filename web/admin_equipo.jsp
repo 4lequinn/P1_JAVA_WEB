@@ -58,16 +58,19 @@
                 </thead>
                 <tbody>
                     <c:forEach var="x" items="${listaEquipos}">
+                    <form action="ControladorAdminEquipo" method="POST">
                     <tr>
-                        <td>${x.getNombre()}</td>
-                        <td>${x.getLiga().getDescripcion()}</td>
-                        <td>${x.getPerfilJugador().getUsuario().getUsuario()}</td>
-                        <td>${x.getCantidadJugador()}</td>
-                        <td>${ 8 - x.getCantidadJugador()}</td>
-                        <td>
-                            <a href="#" class="btn btn-primary"><i class="fas fa-shield-alt"></i>Modificar</a>
-                            <a onclick="eliminarEquipo(${x.getId()})"  class="btn btn-danger"><i class="fas fa-shield-alt"></i>Eliminar</a>
-                        </td>
+                            <input value="${x.getId()}" name="txtId" id="txtId" hidden>
+                            <td>${x.getNombre()}</td>
+                            <td>${x.getLiga().getDescripcion()}</td>
+                            <td>${x.getPerfilJugador().getUsuario().getUsuario()}</td>
+                            <td>${x.getCantidadJugador()}</td>
+                            <td>${ 8 - x.getCantidadJugador()}</td>
+                            <td>
+                               <button type="submit" class="btn btn-primary" value="cargarDatosEquipo" name="btnAccion" id="btnAccion"><i class="fas fa-sign-in-alt"></i> Modificar</button>
+                                <a onclick="eliminarEquipo(${x.getId()})"  class="btn btn-danger"><i class="fas fa-shield-alt"></i>Eliminar</a>
+                            </td>
+                       </form> 
                     </c:forEach>
                     </tr>
                 </tbody>
