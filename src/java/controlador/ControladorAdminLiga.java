@@ -11,49 +11,53 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import modelo.dao.LigaDAO;
-import modelo.dao.UsuarioDAO;
 
 /**
  *
  * @author jorge
  */
-public class ControladorAdmin extends HttpServlet {
-    UsuarioDAO dao = new UsuarioDAO();
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+public class ControladorAdminLiga extends HttpServlet {
+
+    LigaDAO dao = new LigaDAO();
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+    }
+    
+    protected void eliminarLiga(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+            int liga = Integer.parseInt(request.getParameter("liga"));
+            if(dao.eliminar(liga)){
+                request.getSession().setAttribute("msjLiga", "Eliminó!");
+            }else{
+                request.getSession().setAttribute("msjLiga", "No se pudo eliminar!");
+            }
+        } catch (Exception e) {
+            request.getSession().setAttribute("msjLiga", "Error");
+        }finally{
+            response.sendRedirect("ControladorAdminLiga");
+        }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
+            throws ServletException, IOException {
         try {
-            //Precargar listas
-            request.setAttribute("listaUsuarios", dao.listar());
-            request.getRequestDispatcher("admin.jsp").forward(request, response);
+
+            if (request.getParameter("liga") != null) {
+                eliminarLiga(request, response);
+            } else {
+                //Precargar listas
+                request.setAttribute("listaLigas", dao.listar());
+                request.getRequestDispatcher("admin_liga.jsp").forward(request, response);
+            }
+
         } catch (Exception e) {
-            
-        }    
+
+        }
     }
 
     /**
@@ -67,6 +71,7 @@ public class ControladorAdmin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        processRequest(request, response);
     }
 
     /**

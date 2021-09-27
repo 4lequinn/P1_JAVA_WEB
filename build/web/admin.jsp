@@ -6,12 +6,12 @@
 
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
-UsuarioDAO dao = new UsuarioDAO();
-HttpSession objSession=request.getSession(false);
-String usuario=String.valueOf(objSession.getAttribute("usuario"));
-if("null".equals(usuario) || dao.TipoUsuario(usuario)==2){
-    response.sendRedirect("login.jsp");
-}
+    UsuarioDAO dao = new UsuarioDAO();
+    HttpSession objSession = request.getSession(false);
+    String usuario = String.valueOf(objSession.getAttribute("usuario"));
+    if ("null".equals(usuario) || dao.TipoUsuario(usuario) == 2) {
+        response.sendRedirect("login.jsp");
+    }
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -27,10 +27,10 @@ if("null".equals(usuario) || dao.TipoUsuario(usuario)==2){
                 <a class="nav-link" href="ControladorAdmin">Administrar Usuario</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="admin_equipo.jsp">Administrar Equipo</a>
+                <a class="nav-link" href="ControladorAdminEquipo">Administrar Equipo</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="admin_liga.jsp">Administrar Liga</a>
+                <a class="nav-link" href="ControladorAdminLiga">Administrar Liga</a>
             </li>
         </ul>
         <div class="container mt-5">
@@ -38,9 +38,8 @@ if("null".equals(usuario) || dao.TipoUsuario(usuario)==2){
             <table class="table ">
                 <thead>
                     <tr>
-                        <th><input class="form-control" type="text" name="txtNombre" id="txtNombre" placeholder="Ingrese un Nombre" value="" required></th>
-                        <th><input class="form-control" type="text" name="txtContrasenia" id="txtContrasenia" placeholder="Ingrese una contraseña" value="" required></th>
-                        <th><a href="#" class="btn btn-success"><i class="fas fa-shield-alt"></i>Agregar</a></th>
+                        <th><a href="ControladorUsuario?opcionUsuario=agregar" class="btn btn-success"><i class="fas fa-shield-alt"></i>Agregar</a></th>
+
                     </tr>
                 </thead>
             </table>
@@ -52,30 +51,40 @@ if("null".equals(usuario) || dao.TipoUsuario(usuario)==2){
                     <tr>
                         <th>Usuario</th>
                         <th>Contraseña</th>
+                        <th>Tipo Usuario</th>
                         <th>Opción</th>
                     </tr>
                 </thead>
                 <tbody>
                     <c:forEach var="x" items="${listaUsuarios}">
-                    <tr>
-                        <td>${x.getUsuario()}</td>
-                        <td>${x.getContrasenia()}</td>
-                        <td><a href="#" class="btn btn-primary"><i class="fas fa-shield-alt"></i>Modificar</a>
-                            <a onclick="confirmDelete()"  class="btn btn-danger"><i class="fas fa-shield-alt"></i>Eliminar</a>
-                            <!-- (<& = x.getId()&> a la función hace falta agregar el ID  -->
-                        </td>
-                    </tr>
-                    </c:forEach>
+                    <form method="POST" action="ControladorUsuario">
+                        <tr
+                            <!-- Trucazo -->
+                            <td>${x.getUsuario()}</td> <input value="${x.getUsuario()}" name="txtNomUser" id="txtNomUser" hidden>
+                            <td>${x.getContrasenia()}</td> <input value="${x.getContrasenia()}" name="txtPassUser" id="txtPassUser" hidden>
+                            <td>${x.getTipoUsuario().getDescripcion()}</td> <input value="${x.getTipoUsuario().getId()}" name="txtTipoUser" id="txtTipoUser" hidden>
+                            <td>
+                                <button type="submit" class="btn btn-primary" value="cargarDatosUsuario" name="btnAccion" id="btnAccion"><i class="fas fa-sign-in-alt"></i> Modificar</button>
+                                <a href="#" onclick="eliminarUsuario('${x.getUsuario()}')"  class="btn btn-danger"><i class="fas fa-shield-alt"></i>Eliminar</a>
+                            </td>
+                        </tr>
+                    </form>
+                </c:forEach>
+                <%
+                    if (request.getSession().getAttribute("msj") != null) {
+                %>
+                <h4>${msj}</h4>
+                <% } %>
                 </tbody>
             </table>
+            <%@include file="base_footer.jsp" %>
+            <!--Importamos la librería Sweet Alert -->
+            <jsp:include page="includes/cdn-sweet-alert.jsp"></jsp:include>
+            <!-- Importamos el script de formulario -->
+            <script src="static/js/formulario-eliminar.js" ></script>
+            <link rel="stylesheet" href="static/css/admin.css">
         </div>
-        <%@include file="base_footer.jsp" %>
-        <!--Importamos la librería Sweet Alert -->
-        <jsp:include page="includes/cdn-sweet-alert.jsp"></jsp:include>
-        <!-- Importamos el script de formulario -->
-        <script src="static/js/formulario-eliminar.js" ></script>
-        <link rel="stylesheet" href="static/css/admin.css">
-    </div>
+
 
 </html>
 

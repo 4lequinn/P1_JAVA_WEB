@@ -51,8 +51,8 @@ public class TestPerfilJugadorDAO {
         //OK
         
 //        PerfilJugador perfil = new PerfilJugador();
-//        perfil = dao.buscar(2);
-//        System.out.println(perfil.getNombre());
+//        perfil = dao.buscarIdUsuario("ricardouwu");
+//        System.out.println(perfil.getId());
 
         //Listar Perfiles
         //Ok
