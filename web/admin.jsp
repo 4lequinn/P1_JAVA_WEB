@@ -30,7 +30,7 @@
                 <a class="nav-link" href="admin_equipo.jsp">Administrar Equipo</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="admin_liga.jsp">Administrar Liga</a>
+                <a class="nav-link" href="ControladorAdminLiga">Administrar Liga</a>
             </li>
         </ul>
         <div class="container mt-5">
@@ -64,8 +64,8 @@
                             <td>${x.getContrasenia()}</td> <input value="${x.getContrasenia()}" name="txtPassUser" id="txtPassUser" hidden>
                             <td>${x.getTipoUsuario().getDescripcion()}</td> <input value="${x.getTipoUsuario().getId()}" name="txtTipoUser" id="txtTipoUser" hidden>
                             <td>
-                                <button type="submit" class="btn btn-primary" value="cargarDatosUsuario" name="btnAccion" id="btnAccion"><i class="fas fa-sign-in-alt"></i> Modificar 2 </button>
-                                <a href="#" onclick="confirmDelete('${x.getUsuario()}')"  class="btn btn-danger"><i class="fas fa-shield-alt"></i>Eliminar</a>
+                                <button type="submit" class="btn btn-primary" value="cargarDatosUsuario" name="btnAccion" id="btnAccion"><i class="fas fa-sign-in-alt"></i> Modificar</button>
+                                <a href="#" onclick="eliminarUsuario('${x.getUsuario()}')"  class="btn btn-danger"><i class="fas fa-shield-alt"></i>Eliminar</a>
                             </td>
                         </tr>
                     </form>

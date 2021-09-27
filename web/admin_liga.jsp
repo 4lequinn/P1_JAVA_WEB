@@ -4,6 +4,7 @@
     Author     : Sammy Guergachi <sguergachi at gmail.com>
 --%>
 
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -21,7 +22,7 @@
                 <a class="nav-link" href="admin_equipo.jsp">Administrar Equipo</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="admin_liga.jsp">Administrar Liga</a>
+                <a class="nav-link" href="ControladorAdminLiga">Administrar Liga</a>
             </li>
         </ul>
         <div class="container mt-5">
@@ -29,8 +30,6 @@
             <table class="table">
                 <thead class="thead">
                     <tr>
-                        <th><input class="form-control" type="text" name="txtNombre" id="txtNombre" placeholder="Ingrese un Nombre" value="" required></th>
-                        <th><input class="form-control" type="text" name="txtContrasenia" id="txtContrasenia" placeholder="Ingrese una contraseña" value="" required></th>
                         <th><a href="#" class="btn btn-success"><i class="fas fa-shield-alt"></i>Agregar</a></th>
                     </tr>
                 </thead>
@@ -41,20 +40,26 @@
             <table class="table">
                 <thead class="thead">
                     <tr>
-                        <th>Usuario</th>
-                        <th>Contraseña</th>
+                        <th>Descripción</th>
+                        <th>Video Juego</th>
                         <th>Opción</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>John</td>
-                        <td>Doe1274</td>
-                        <td><a href="#" class="btn btn-primary"><i class="fas fa-shield-alt"></i>Modificar</a>
-                            <a onclick="confirmDelete()"  class="btn btn-danger"><i class="fas fa-shield-alt"></i>Eliminar</a>
-                            <!-- (<& = x.getId()&> a la función hace falta agregar el ID  -->
-                        </td>
-                    </tr>
+
+                    <c:forEach var="x" items="${listaLigas}">
+                    <form method="POST" action="ControladorUsuario">
+                        <tr>
+                            <td>${x.getDescripcion()}</td>
+                            <td>${x.getVideoJuego().getNombre()}</td>
+                            <td>
+                                <a href="#" class="btn btn-primary"><i class="fas fa-shield-alt"></i>Modificar</a>
+                                <a onclick="eliminarLiga(${x.getId()})"  class="btn btn-danger"><i class="fas fa-shield-alt"></i>Eliminar</a>
+                            </td>
+                        </tr>
+                    </form>
+                    </c:forEach>
+
                 </tbody>
             </table>
         </div>

@@ -5,7 +5,7 @@
  */
 
 
-function confirmDelete(usuario) {
+function eliminarUsuario(usuario) {
     Swal.fire({
         icon: 'warning',
         title: '¿Estás Seguro?',
@@ -28,10 +28,28 @@ function confirmDelete(usuario) {
 }
 
 
-function agregar() {
-    mostrarAlerta("Éxito!","Datos guardados con éxito!", "success");
+function eliminarLiga(liga) {
+    console.log('ID ' + liga);
+    Swal.fire({
+        icon: 'warning',
+        title: '¿Estás Seguro?',
+        text: '¡No podrás deshacer la acción!',
+        showCancelButton: true,
+        cancelButtonColor: "#d33",
+        cancelButtonText: "Cancelar",
+        confirmButtonText: "Si, Eliminar",
+    }).then((result) => {
+        if (result.value) {
+            Swal.fire(
+                    '¡Eliminado!',
+                    'Usuario Eliminado correctamente',
+                    'success'
+                    ).then(function () {
+                window.location.href = "ControladorAdminLiga?liga=" + (liga);
+            })
+        }
+    })
 }
-
 
 function mostrarAlerta(titulo, descripcion, tipoAleta) {
     swal.fire(
