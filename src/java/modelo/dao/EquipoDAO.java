@@ -37,11 +37,13 @@ public class EquipoDAO extends MetodosModelo<Equipo> {
     private void confirmarCambios(){
         transaction.commit();
     }
+    
     @Override
     public String getNombreModelo() {
         return "Equipo";
     }
-      public List<Equipo> buscarEquipoPorPerfil(int idPerfil) {
+    
+    public List<Equipo> buscarEquipoPorPerfil(int idPerfil) {
         try{
         conectar();
         List<Equipo>listado=session.createQuery("from Equipo where perfilJugador= '"+idPerfil+"'").list();
@@ -50,6 +52,5 @@ public class EquipoDAO extends MetodosModelo<Equipo> {
            throw new RuntimeException("No se ha podido almacenar");
        }
     }
-
     
 }

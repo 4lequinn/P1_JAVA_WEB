@@ -29,7 +29,6 @@ function eliminarUsuario(usuario) {
 
 
 function eliminarLiga(liga) {
-    console.log('ID ' + liga);
     Swal.fire({
         icon: 'warning',
         title: '¿Estás Seguro?',
@@ -46,6 +45,29 @@ function eliminarLiga(liga) {
                     'success'
                     ).then(function () {
                 window.location.href = "ControladorAdminLiga?liga=" + (liga);
+            })
+        }
+    })
+}
+
+function eliminarEquipo(equipo) {
+    console.log(equipo);
+    Swal.fire({
+        icon: 'warning',
+        title: '¿Estás Seguro?',
+        text: '¡No podrás deshacer la acción!',
+        showCancelButton: true,
+        cancelButtonColor: "#d33",
+        cancelButtonText: "Cancelar",
+        confirmButtonText: "Si, Eliminar",
+    }).then((result) => {
+        if (result.value) {
+            Swal.fire(
+                    '¡Eliminado!',
+                    'Usuario Eliminado correctamente',
+                    'success'
+                    ).then(function () {
+                window.location.href = "ControladorAdminEquipo?equipo=" + (equipo);
             })
         }
     })

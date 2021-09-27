@@ -21,7 +21,6 @@ import modelo.dao.UsuarioDAO;
  */
 public class ControladorAdmin extends HttpServlet {
     UsuarioDAO dao = new UsuarioDAO();
-    LigaDAO ligaDAO = new LigaDAO();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -51,7 +50,6 @@ public class ControladorAdmin extends HttpServlet {
         try {
             //Precargar listas
             request.setAttribute("listaUsuarios", dao.listar());
-            request.setAttribute("listaLigas", ligaDAO.listar());
             request.getRequestDispatcher("admin.jsp").forward(request, response);
         } catch (Exception e) {
             
