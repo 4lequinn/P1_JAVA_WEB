@@ -18,6 +18,7 @@ import modelo.dao.UsuarioDAO;
 import modelo.dto.Equipo;
 import modelo.dto.EstadoSolicitud;
 import modelo.dto.Incripcion;
+import modelo.dto.Liga;
 import modelo.dto.PerfilJugador;
 import modelo.dto.TipoJugador;
 import modelo.dto.TipoUsuario;
@@ -51,6 +52,9 @@ public class ControladorUsuario extends HttpServlet {
          }
          if(opcion.equalsIgnoreCase("ModificarUsuario")){
              modificarUsuario(request, response);
+         }
+         if(opcion.equalsIgnoreCase("RegistrarEquipo")){
+             RegistrarEquipo(request, response);
          }
     }
     protected void Loguear(HttpServletRequest request, HttpServletResponse response)
@@ -146,6 +150,41 @@ public class ControladorUsuario extends HttpServlet {
         }        
         
     } 
+    
+    protected void RegistrarEquipo(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+            //Buscar el usuario actual de la session
+            HttpSession objSession2 = request.getSession(false);
+            String usuario = (String) objSession2.getAttribute("usuario");
+
+            //Dao
+            EquipoDAO daoE = new EquipoDAO();
+            PerfilJugadorDAO daoP = new PerfilJugadorDAO();
+
+            //Campos para crear Equipo
+            String nombre = request.getParameter("txtEquipo");
+            Liga l = new Liga(Integer.parseInt(request.getParameter("cboLiga")));
+            
+            //Se busca el perfil de jugador con el usuario encontrado anteriormente
+            PerfilJugador p = daoP.buscarIdUsuario(usuario);
+            
+            //Se pasa los parametros a equipo
+            Equipo e = new Equipo(1, l, p, nombre, 1);
+            
+            //Se agrega el equipo
+            if (daoE.agregar(e)) {
+                request.getSession().setAttribute("msOK", "Equipo agregado correctamente");
+            } else {
+                request.getSession().setAttribute("msNO", "El Equipo no se ha podido agregar");
+            }
+        } catch (Exception e) {
+            request.getSession().setAttribute("msNO", "Error:" + e.getMessage());
+        } finally {
+            response.sendRedirect("crear_equipo.jsp");
+        }
+    }
+    
     
     protected void eliminarUsuario(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

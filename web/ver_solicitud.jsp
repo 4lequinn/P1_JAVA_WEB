@@ -55,10 +55,14 @@ if("null".equals(usuario)){
                             <th><%=aux2.getPerfilJugador().getUsuario().getUsuario() %></th>
                             <th><%=aux2.getPerfilJugador().getNombre() %></th>
                             <th><%=aux2.getPerfilJugador().getCorreo() %></th>
-                            <th><%=aux2.getPerfilJugador().getHabilidad() %></th>
+                            <th><%=aux2.getPerfilJugador().getHabilidad() %></th>s
                             <th><%=aux2.getPerfilJugador().getTipoJugador().getDescripcion() %></th>
                             <th><%=aux2.getFecha() %></th>
-                            <th><%=aux2.getEstadoSolicitud().getDescripcion() %></th>
+                            <th><%=aux2.getEstadoSolicitud().getDescripcion() %>
+                                <button type="submit" class="btn btn-success mb-1" value="#" name="btnAccion" id="btnAccion"> Aceptar </button>
+                                
+                                <button type="submit" class="btn btn-danger mt-1" value="#" name="btnAccion" id="btnAccion"> Rechazar </button>
+                            </th>
                             <th><%=aux2.getEquipo().getNombre() %></th>
                         </tr>
                             <% }%>

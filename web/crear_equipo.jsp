@@ -12,16 +12,13 @@
             <div class="col-xs-12 col-md-14 main-section">
                 <div class="modal-content">
                     <div class="col-12 user-img mt-4">
-                        <h2>Registrate</h2>
+                        <h2>Crear Equipo</h2>
                     </div>
                     <form class="col-12" action="ControladorUsuario" method="POST">
                         <div class="form-group" id="equipo-group">
-                            <input class="form-control" type="text" name="txtNombre" id="txtNombre" placeholder="Ingrese el nombre del equipo" value="" required>
+                            <input class="form-control" type="text" name="txtEquipo" id="txtEquipo" placeholder="Ingrese el nombre del equipo" value="" required>
                         </div> 
-                        <div class="form-group" id="number-group">
-                            <input class="form-control" type="number" name="txtCantidad" id="correo" placeholder="Ingrese de jugadores max" value="">
-                        </div>   
-                        <div class="form-group">
+                        <div class="form-group" required>
                             <select name="cboLiga" class="form-control">
                                 <option value="1">Fortnite</option>
                                 <option value="2">CSGO</option>
@@ -30,7 +27,7 @@
                                 <option value="5">League Of Legends</option>
                             </select>    
                         </div> 
-                        <button type="submit" class="btn btn-primary" value="RegistrarUsuario" name="btnAccion" id="btnAccion"><i class="fas fa-sign-in-alt"></i>  Crea Equipo </button>
+                        <button type="submit" class="btn btn-primary" value="RegistrarEquipo" name="btnAccion" id="btnAccion"><i class="fas fa-sign-in-alt"></i>  Crea Equipo </button>
                     </form>
                     <div>
                         ${msOK}${msNO}
