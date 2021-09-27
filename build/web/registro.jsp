@@ -1,3 +1,5 @@
+<%@page import="modelo.dto.TipoJugador"%>
+<%@page import="modelo.dao.TipoJugadorDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -26,8 +28,12 @@
                         </div> 
                         <div class="form-group">
                             <select name="cboTipoJugador" class="form-control">
-                                <option value="1">Estratega</option>
-                                <option value="2">Shooter</option>
+                                <% 
+                                    TipoJugadorDAO Tipo = new TipoJugadorDAO();
+                                    for(TipoJugador x: Tipo.listar()){
+                                %>  
+                                <option value="<%= x.getId() %>"><%= x.getDescripcion() %></option>
+                                <%  } %>
                             </select>    
                         </div> 
                          <!--Usuario-->
