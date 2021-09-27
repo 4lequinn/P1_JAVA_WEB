@@ -30,7 +30,7 @@ if("null".equals(usuario)){
                             <th>Nombre Equipo</th>
                             <th>Cantidad Jugador</th>
                             <th>Liga</th>
-                            <th>Dueño</th>
+                            <th>Capitan Equipo</th>
                             <th>Solicitud</th>
                         </tr>
                     </thead>

@@ -55,6 +55,24 @@ public class PerfilJugadorDAO extends MetodosModelo<PerfilJugador>{
         }
         return perfilJugador;
     }
+    
+    public PerfilJugador buscarIdUsuario(String nombreUsuario){
+        PerfilJugador perfilJugador = null;
+        try {
+            conectar();
+            String consulta = "from PerfilJugador where id_usuario = :nombreUsuario";
+            Query query = session.createQuery(consulta);
+            // Variable de sustitución
+            query.setString("nombreUsuario", nombreUsuario);
+            perfilJugador = (PerfilJugador) query.list().get(0);
+        } catch (Exception e) {
+            System.out.println("Error al buscar " + e.getMessage());
+        }finally{
+            desconectar();
+        }
+        return perfilJugador;
+    }
+    
     public boolean Modificar(String nombreUsuario, String nombre, String correo, String habilidad){
         boolean valida = false;
         try {
