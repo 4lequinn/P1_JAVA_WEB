@@ -4,6 +4,15 @@
     Author     : Sammy Guergachi <sguergachi at gmail.com>
 --%>
 
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+    UsuarioDAO dao = new UsuarioDAO();
+    HttpSession objSession = request.getSession(false);
+    String usuario = String.valueOf(objSession.getAttribute("usuario"));
+    if ("null".equals(usuario) || dao.TipoUsuario(usuario) == 2) {
+        response.sendRedirect("login.jsp");
+    }
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,10 +27,10 @@
                 <a class="nav-link" href="ControladorAdmin">Administrar Usuario</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="admin_equipo.jsp">Administrar Equipo</a>
+                <a class="nav-link" href="ControladorAdminEquipo">Administrar Equipo</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="admin_liga.jsp">Administrar Liga</a>
+                <a class="nav-link" href="ControladorAdminLiga">Administrar Liga</a>
             </li>
         </ul>
         <div class="container mt-5">
@@ -29,8 +38,6 @@
             <table class="table">
                 <thead class="thead">
                     <tr>
-                        <th><input class="form-control" type="text" name="txtNombre" id="txtNombre" placeholder="Ingrese un Nombre" value="" required></th>
-                        <th><input class="form-control" type="text" name="txtContrasenia" id="txtContrasenia" placeholder="Ingrese una contraseña" value="" required></th>
                         <th><a href="#" class="btn btn-success"><i class="fas fa-shield-alt"></i>Agregar</a></th>
                     </tr>
                 </thead>
@@ -41,19 +48,27 @@
             <table class="table">
                 <thead class="thead">
                     <tr>
-                        <th>Usuario</th>
-                        <th>Contraseña</th>
+                        <th>Nombre del Equipo</th>
+                        <th>Liga</th>
+                        <th>Capitán</th>
+                        <th>Miembros</th>
+                        <th>Cupos</th>
                         <th>Opción</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <c:forEach var="x" items="${listaEquipos}">
                     <tr>
-                        <td>John</td>
-                        <td>Doe1274</td>
-                        <td><a href="#" class="btn btn-primary"><i class="fas fa-shield-alt"></i>Modificar</a>
-                            <a onclick="confirmDelete()"  class="btn btn-danger"><i class="fas fa-shield-alt"></i>Eliminar</a>
-                            <!-- (<& = x.getId()&> a la función hace falta agregar el ID  -->
+                        <td>${x.getNombre()}</td>
+                        <td>${x.getLiga().getDescripcion()}</td>
+                        <td>${x.getPerfilJugador().getUsuario().getUsuario()}</td>
+                        <td>${x.getCantidadJugador()}</td>
+                        <td>${ 8 - x.getCantidadJugador()}</td>
+                        <td>
+                            <a href="#" class="btn btn-primary"><i class="fas fa-shield-alt"></i>Modificar</a>
+                            <a onclick="eliminarEquipo(${x.getId()})"  class="btn btn-danger"><i class="fas fa-shield-alt"></i>Eliminar</a>
                         </td>
+                    </c:forEach>
                     </tr>
                 </tbody>
             </table>
