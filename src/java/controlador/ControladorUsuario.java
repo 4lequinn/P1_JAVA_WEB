@@ -57,6 +57,7 @@ public class ControladorUsuario extends HttpServlet {
              RegistrarEquipo(request, response);
          }
     }
+    
     protected void Loguear(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        try{

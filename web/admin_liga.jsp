@@ -38,7 +38,7 @@
             <table class="table">
                 <thead class="thead">
                     <tr>
-                        <th><a href="#" class="btn btn-success"><i class="fas fa-shield-alt"></i>Agregar</a></th>
+                        <th><a href="agregar-liga.jsp" class="btn btn-success"><i class="fas fa-shield-alt"></i>Agregar</a></th>
                     </tr>
                 </thead>
             </table>
@@ -58,14 +58,15 @@
                 <tbody>
 
                     <c:forEach var="x" items="${listaLigas}">
-                    <form method="POST" action="ControladorUsuario">
+                    <form method="POST" action="ControladorAdminLiga">
                         <tr>
+                            <input name="txtIdLiga" id="txtIdLiga" value="${x.getId()}" hidden>
                             <td>${x.getDescripcion()}</td>
                             <td>${x.getVideoJuego().getNombre()}</td>
                             <td>${x.getCantidadEquipo()}</td>
                             <td>${16 - x.getCantidadEquipo()}</td>
                             <td>
-                                <a href="#" class="btn btn-primary"><i class="fas fa-shield-alt"></i>Modificar</a>
+                                <button type="submit" class="btn btn-primary" value="cargarDatosLiga" name="btnAccion" id="btnAccion"><i class="fas fa-sign-in-alt"></i>Modificar</button>
                                 <a onclick="eliminarLiga(${x.getId()})"  class="btn btn-danger"><i class="fas fa-shield-alt"></i>Eliminar</a>
                             </td>
                         </tr>

@@ -14,10 +14,9 @@ import modelo.dto.TipoUsuario;
 import modelo.dto.Usuario;
 
 /**
- * 
+ *
  * @author Jorge
  */
-
 public class TestPerfilJugadorDAO {
 
     public static void main(String[] args) {
@@ -27,18 +26,17 @@ public class TestPerfilJugadorDAO {
         //           OK!
         //
         /////////////////////////////////////////////////
-        
         /*
             OJO
             El método modificar del dao es necesario incluir el ID al instanciar la entidad
         
          */
         TipoUsuario tipoUsuario = new TipoUsuario(2);
-        Usuario usuario = new Usuario("Jorge",tipoUsuario, "Ricardo Milos 69");
+        Usuario usuario = new Usuario("Jorge", tipoUsuario, "Ricardo Milos 69");
         TipoJugador tipoJugador = new TipoJugador(1);
-        PerfilJugador perfilJugador = new PerfilJugador(2, tipoJugador, usuario, "Jorge", "lolero.promedio@hotmail.com","Experto en trolearla");
+        PerfilJugador perfilJugador = new PerfilJugador(2, tipoJugador, usuario, "Jorge", "lolero.promedio@hotmail.com", "Experto en trolearla");
         PerfilJugadorDAO dao = new PerfilJugadorDAO();
-        
+
         //Agregar Perfil
         //OK
 //        if(dao.agregar(perfilJugador)){
@@ -46,38 +44,32 @@ public class TestPerfilJugadorDAO {
 //        }else{
 //            JOptionPane.showMessageDialog(null, "NO se agregó");
 //        }
-
         //Buscar Perfil
         //OK
-        
 //        PerfilJugador perfil = new PerfilJugador();
 //        perfil = dao.buscarIdUsuario("ricardouwu");
 //        System.out.println(perfil.getId());
-
         //Listar Perfiles
         //Ok
-        
 //    List<PerfilJugador> listaPerfil = dao.listar();
 //    for(PerfilJugador x:listaPerfil){
 //        System.out.println(x.getCorreo());
 //    }
-
         //Modificar perfil
         //OK
-        
 //        if(dao.modificar(perfilJugador)){
 //            JOptionPane.showMessageDialog(null, "Modificó!");
 //        }else{
 //            JOptionPane.showMessageDialog(null, "No se modificó");
 //        }
-
         //Eliminar Perfil
         //OK
-        
 //        if(dao.eliminar(perfilJugador.getId())){
 //            JOptionPane.showMessageDialog(null, "Eliminó!");
 //        }else{
 //            JOptionPane.showMessageDialog(null, "No se eliminó");
 //        }
+
+
     }
 }
