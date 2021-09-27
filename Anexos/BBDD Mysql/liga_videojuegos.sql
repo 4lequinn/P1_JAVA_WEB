@@ -175,7 +175,11 @@ CREATE TABLE `liga` (
 --
 
 INSERT INTO `liga` (`id`, `descripcion`, `cantidad_equipo`, `id_juego`) VALUES
-(1, 'LIGA DE LOS MUCAS', 0, 1);
+(1, 'LIGA DE LOS MUCAS', 0, 1),
+(2, 'LIGA DE LOL', 0, 1),
+(3, 'LIGA DE Apex', 0, 2),
+(4, 'LIGA DE Brazukas', 0, 3),
+(5, 'LIGA DE Pelota', 0, 4);
 
 -- --------------------------------------------------------
 
@@ -218,8 +222,9 @@ CREATE TABLE `tipo_jugador` (
 --
 
 INSERT INTO `tipo_jugador` (`id`, `descripcion`) VALUES
-(1, 'ESTRATEGA'),
-(2, 'SHOOTER');
+(1, 'ESTRATEGIA'),
+(2, 'FUTBOLERO'),
+(3, 'DISPAROS');
 
 -- --------------------------------------------------------
 

@@ -1,3 +1,5 @@
+<%@page import="modelo.dto.Liga"%>
+<%@page import="modelo.dao.LigaDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,13 +20,15 @@
                         <div class="form-group" id="equipo-group">
                             <input class="form-control" type="text" name="txtEquipo" id="txtEquipo" placeholder="Ingrese el nombre del equipo" value="" required>
                         </div> 
+
                         <div class="form-group" required>
                             <select name="cboLiga" class="form-control">
-                                <option value="1">Fortnite</option>
-                                <option value="2">CSGO</option>
-                                <option value="3">Battlefield 4</option>
-                                <option value="4">Call Of Duty Warzone</option>
-                                <option value="5">League Of Legends</option>
+                                <% 
+                                    LigaDAO Liga = new LigaDAO();
+                                    for(Liga x: Liga.listar()){
+                                %>  
+                                <option value="<%= x.getId() %>"><%= x.getDescripcion() %></option>
+                                <%  } %>
                             </select>    
                         </div> 
                         <button type="submit" class="btn btn-primary" value="RegistrarEquipo" name="btnAccion" id="btnAccion"><i class="fas fa-sign-in-alt"></i>  Crea Equipo </button>
