@@ -56,6 +56,12 @@ public class ControladorUsuario extends HttpServlet {
          if(opcion.equalsIgnoreCase("RegistrarEquipo")){
              RegistrarEquipo(request, response);
          }
+         if(opcion.equalsIgnoreCase("AceptarSolicitud")){
+             AceptarSolicitud(request, response);
+         }
+         if(opcion.equalsIgnoreCase("RechazarSolicitud")){
+             RechazarSolicitud(request, response);
+         }
     }
     
     protected void Loguear(HttpServletRequest request, HttpServletResponse response)
@@ -258,6 +264,45 @@ public class ControladorUsuario extends HttpServlet {
         }finally{
             response.sendRedirect("modificar-usuario.jsp");
         }
+    }
+    protected void AceptarSolicitud(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try{
+             int idSolicitud = Integer.parseInt(request.getParameter("txtIdSolicitud"));
+             EstadoSolicitud e = new EstadoSolicitud(2);
+             InscripcionDAO daoI = new InscripcionDAO();
+             if(daoI.modificarEstadoIncripcion(idSolicitud,e)){
+                request.getSession().setAttribute("msj", "Aceptó la solicitud");
+            }else{
+                request.getSession().setAttribute("msj", "No se pudo aceptar la solicitud!");
+            }
+        }catch(Exception e){
+            request.getSession().setAttribute("msj", "ERROR");
+        }
+        finally{
+            response.sendRedirect("ver_solicitud.jsp");
+        }
+
+    }
+    protected void RechazarSolicitud(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+         try{
+            int idSolicitud = Integer.parseInt(request.getParameter("txtIdSolicitud"));
+            EstadoSolicitud e = new EstadoSolicitud(3);
+            InscripcionDAO daoI = new InscripcionDAO();
+             if(daoI.modificarEstadoIncripcion(idSolicitud,e)){
+                request.getSession().setAttribute("msj", "Rechazó la solicitud");
+            }else{
+                request.getSession().setAttribute("msj", "No se pudo Rechazar la solicitud!");
+            }
+        }catch(Exception e){
+            request.getSession().setAttribute("msj", "ERROR");
+        }
+        finally{
+            response.sendRedirect("ver_solicitud.jsp");
+        }
+
+
     }
     
 

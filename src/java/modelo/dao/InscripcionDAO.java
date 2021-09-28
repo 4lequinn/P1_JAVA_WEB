@@ -8,6 +8,7 @@ package modelo.dao;
 
 import java.util.List;
 import modelo.crud.MetodosModelo;
+import modelo.dto.EstadoSolicitud;
 import modelo.dto.Incripcion;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -57,6 +58,24 @@ public class InscripcionDAO extends MetodosModelo<Incripcion>{
        }catch(Exception ex){
            throw new RuntimeException("No se ha podido almacenar");
        }
+        
+    }
+          
+    public boolean modificarEstadoIncripcion(int idIncripcion,EstadoSolicitud estadoSolicitud){
+        boolean valida = false;
+        try {
+            Incripcion i = buscar(idIncripcion);
+            conectar();
+            i.setEstadoSolicitud(estadoSolicitud);
+            session.update(i);
+            confirmarCambios();
+            valida = true;
+        } catch (Exception ex) {
+            System.out.println("ERROR AL MODIFICAR" + ex.getMessage());
+        }finally{
+            desconectar();
+        }
+        return valida;
     }
    
 }

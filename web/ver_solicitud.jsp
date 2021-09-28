@@ -40,6 +40,7 @@ if("null".equals(usuario)){
                             <th>Fecha</th>
                             <th>Estado solicitud</th>
                             <th>Nombre de equipo a solicitar</th>
+                            <th>Aceptar/Rechazar</th>
                         </tr>
                     </thead>
                     <tbody> 
@@ -52,18 +53,22 @@ if("null".equals(usuario)){
                            for(Incripcion aux2:daoI.buscarIncripcionPorEquipo(aux.getId())){ 
                        %>              
                         <tr>
-                            <th><%=aux2.getPerfilJugador().getUsuario().getUsuario() %></th>
+                            <form action="ControladorUsuario" method="post">
+                            <th>
+                                <input class="form-control" type="number" name="txtIdSolicitud" id="txtIdSolicitud" value="<%=aux2.getId() %>" required="" hidden="">
+                                <%=aux2.getPerfilJugador().getUsuario().getUsuario() %>
+                            </th>
                             <th><%=aux2.getPerfilJugador().getNombre() %></th>
                             <th><%=aux2.getPerfilJugador().getCorreo() %></th>
                             <th><%=aux2.getPerfilJugador().getHabilidad() %></th>s
                             <th><%=aux2.getPerfilJugador().getTipoJugador().getDescripcion() %></th>
                             <th><%=aux2.getFecha() %></th>
-                            <th><%=aux2.getEstadoSolicitud().getDescripcion() %>
-                                <button type="submit" class="btn btn-success mb-1" value="#" name="btnAccion" id="btnAccion"> Aceptar </button>
-                                
-                                <button type="submit" class="btn btn-danger mt-1" value="#" name="btnAccion" id="btnAccion"> Rechazar </button>
-                            </th>
-                            <th><%=aux2.getEquipo().getNombre() %></th>
+                            <th><%=aux2.getEstadoSolicitud().getDescripcion() %></th>
+                            <th><%=aux2.getEquipo().getNombre() %></th>    
+                            <th><button type="submit" class="btn btn-success mb-1" value="AceptarSolicitud" name="btnAccion" id="btnAccion"> Aceptar </button>
+                                <button type="submit" class="btn btn-danger mt-1" value="RechazarSolicitud" name="btnAccion" id="btnAccion"> Rechazar </button></th>
+                            
+                            </form>
                         </tr>
                             <% }%>
                         <% }%>
