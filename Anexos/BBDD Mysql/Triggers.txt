@@ -93,3 +93,19 @@ BEGIN
 	UPDATE liga SET cantidad_equipo = cantidad_equipo - 1 WHERE id = old.id_liga;
 END $$
 DELIMITER ;
+
+-- Ingresa a un jugador a un equipo al ser aceptado
+DELIMITER $$
+CREATE OR REPLACE TRIGGER TRG_DETALLE_EQUIPO
+AFTER UPDATE on incripcion 
+FOR EACH ROW
+BEGIN
+	IF new.id_estado = 2 THEN
+    -- Solicitud Aceptada
+    insert into detalle_equipo (id_equipo, id_inscripcion) VALUES (new.id_equipo, new.id);
+
+   	END IF;
+END $$
+DELIMITER ;
+
+
