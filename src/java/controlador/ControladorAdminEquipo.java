@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.dao.EquipoDAO;
+import modelo.dto.Equipo;
+import modelo.dto.Liga;
+import modelo.dto.PerfilJugador;
 
 
 /**
@@ -24,7 +27,7 @@ public class ControladorAdminEquipo extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String opcion=request.getParameter("btnAccion");
-        if(opcion.equalsIgnoreCase("CargarDatosEquipo")){
+        if(opcion.equalsIgnoreCase("cargarDatosEquipo")){
              cargarDatosEquipo(request, response);
         }
         if(opcion.equalsIgnoreCase("ModificarEquipo")){
@@ -35,22 +38,41 @@ public class ControladorAdminEquipo extends HttpServlet {
     protected void cargarDatosEquipo(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            // Lo terminaré luego
-        String usuario = request.getParameter("txtNomUser");
-        String contrasenia = request.getParameter("txtPassUser");
-        int tipo = Integer.parseInt(request.getParameter("txtTipoUser"));
-        TipoUsuario tipoUsuario = new TipoUsuario(tipo);
-        Usuario usu = new Usuario(usuario, tipoUsuario, contrasenia);
-        request.getSession().setAttribute("datosUsuario", usu);
+            //Recuperamos el ID de la interfaz de admin
+            int id = Integer.parseInt(request.getParameter("txtId"));
+            //Buscamos el equipo en la BD
+            Equipo equipo = dao.buscar(id);
+            //Enviamos los datos a la página modificar equipo
+            request.getSession().setAttribute("datosEquipo", equipo);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }finally{
-            response.sendRedirect("modificar-usuario.jsp");
+            response.sendRedirect("modificar-equipo.jsp");
         }
     }
         
     protected void modificarEquipo(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        try {
+            int idEquipo = Integer.parseInt(request.getParameter("txtIdEquipo"));
+            String nombre = request.getParameter("txtNombreEquipo");
+            Liga liga = new Liga(Integer.parseInt(request.getParameter("cboLiga")));
+            PerfilJugador perfil = new PerfilJugador(Integer.parseInt(request.getParameter("txtPerfil")));
+            int cantidad = Integer.parseInt(request.getParameter("txtCantidad"));
+            
+            // Generamos el equipo para actualizarlo
+            Equipo equipo = new Equipo(idEquipo, liga, perfil, nombre, cantidad);
+            
+            if(dao.modificar(equipo)){
+                request.getSession().setAttribute("msjt", "Modificó!");
+            }else{
+                request.getSession().setAttribute("msjt", "No Modificó!");
+            }
+        } catch (Exception e) {
+            request.getSession().setAttribute("msjt", "ERROR");
+        }finally{
+            response.sendRedirect("modificar-equipo.jsp");
+        }
     }
 
     protected void eliminarEquipo(HttpServletRequest request, HttpServletResponse response)
@@ -74,9 +96,13 @@ public class ControladorAdminEquipo extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            if (request.getParameter("equipo") != null) {
-                eliminarEquipo(request, response);
-            } else {
+            if(request.getParameter("opcionEquipo") != null){
+                if(request.getParameter("opcionEquipo").equals("agregar")){
+                   request.getRequestDispatcher("crear_equipo.jsp").forward(request, response);
+                }   
+            }else if (request.getParameter("equipo") != null) {
+                    eliminarEquipo(request, response);
+            }else {
                 //Precargar listas
                 request.setAttribute("listaEquipos", dao.listar());
                 request.getRequestDispatcher("admin_equipo.jsp").forward(request, response);

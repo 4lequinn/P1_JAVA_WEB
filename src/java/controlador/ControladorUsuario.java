@@ -63,6 +63,7 @@ public class ControladorUsuario extends HttpServlet {
              RechazarSolicitud(request, response);
          }
     }
+    
     protected void Loguear(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        try{

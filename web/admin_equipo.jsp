@@ -38,7 +38,7 @@
             <table class="table">
                 <thead class="thead">
                     <tr>
-                        <th><a href="#" class="btn btn-success"><i class="fas fa-shield-alt"></i>Agregar</a></th>
+                        <th><a href="ControladorAdminEquipo?opcionEquipo=agregar" class="btn btn-success"><i class="fas fa-shield-alt"></i>Agregar</a></th>
                     </tr>
                 </thead>
             </table>
