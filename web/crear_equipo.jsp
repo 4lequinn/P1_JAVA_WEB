@@ -1,6 +1,14 @@
 <%@page import="modelo.dto.Liga"%>
 <%@page import="modelo.dao.LigaDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    UsuarioDAO dao = new UsuarioDAO();
+    HttpSession objSession = request.getSession(false);
+    String usuario = String.valueOf(objSession.getAttribute("usuario"));
+    if ("null".equals(usuario)) {
+        response.sendRedirect("login.jsp");
+    }
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -35,7 +43,6 @@
                         <button type="submit" class="btn btn-primary" value="RegistrarEquipo" name="btnAccion" id="btnAccion"><i class="fas fa-sign-in-alt"></i>  Crea Equipo </button>
                     </form>
                     <div>
-                        ${msOK}${msNO}
                     </div>
                 </div>
             </div>

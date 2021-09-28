@@ -123,6 +123,7 @@ END
 $$
 DELIMITER ;
 
+
 -- --------------------------------------------------------
 
 --
@@ -158,6 +159,20 @@ CREATE TABLE `incripcion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
+
+-- Ingresa a un jugador a un equipo al ser aceptado
+DELIMITER $$
+CREATE OR REPLACE TRIGGER TRG_DETALLE_EQUIPO
+AFTER UPDATE on incripcion 
+FOR EACH ROW
+BEGIN
+	IF new.id_estado = 2 THEN
+    -- Solicitud Aceptada
+    insert into detalle_equipo (id_equipo, id_inscripcion) VALUES (new.id_equipo, new.id);
+
+   	END IF;
+END $$
+DELIMITER ;
 
 --
 -- Estructura de tabla para la tabla `liga`
@@ -201,10 +216,7 @@ CREATE TABLE `perfil_jugador` (
 --
 
 INSERT INTO `perfil_jugador` (`id`, `nombre`, `correo`, `habilidad`, `id_tipo_jugador`, `id_usuario`) VALUES
-(1, 'Jorgito', 'jorgitoxd@gmail.com', '0 skill', 2, 'ricardito69xd'),
-(2, 'maty', 'maty@gmail.com', 'ninguna', 1, 'maty'),
-(3, 'ricardo', 'ricardo@gmail.com', 'ninguna', 1, 'ricardouwu'),
-(4, 'joaco', 'joacoxdd@gmail.com', '100 skill xd', 2, 'joaco');
+(1,'Admin','Admin@admin.cl','Banear',2,'admin');
 
 -- --------------------------------------------------------
 
@@ -262,12 +274,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`usuario`, `contrasenia`, `id_tipo`) VALUES
-('joaco', 'joaco', 2),
-('jorge', 'ricardomilos', 1),
-('jorgito', 'prueba', 1),
-('maty', 'maty', 2),
-('ricardito69xd', 'ojitomaster', 1),
-('ricardouwu', 'ricardouwu', 2);
+('admin', 'admin', 1);
 
 -- --------------------------------------------------------
 

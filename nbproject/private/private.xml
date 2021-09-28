@@ -11,12 +11,6 @@
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/joaco/Desktop/VideoGamesLeague/src/java/controlador/ControladorAdminLiga.java</file>
-            <file>file:/C:/Users/joaco/Desktop/VideoGamesLeague/src/java/controlador/ControladorUsuario.java</file>
-            <file>file:/C:/Users/joaco/Desktop/VideoGamesLeague/src/java/modelo/dto/DetalleEquipo.java</file>
-            <file>file:/C:/Users/joaco/Desktop/VideoGamesLeague/src/java/controlador/ControladorAdminEquipo.java</file>
-            <file>file:/C:/Users/joaco/Desktop/VideoGamesLeague/src/java/modelo/dao/InscripcionDAO.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
