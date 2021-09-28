@@ -158,7 +158,7 @@
                     </a>
                     <span class="tooltip">Crear Equipo</span>
                 </li> 
-                                <li>
+                <li>
                     <a href="ver_solicitud.jsp">
                         <i class='bx bx-search'></i>
                         <span class="links_name">Ver solicitudes</span>

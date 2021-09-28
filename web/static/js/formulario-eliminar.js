@@ -41,7 +41,7 @@ function eliminarLiga(liga) {
         if (result.value) {
             Swal.fire(
                     '¡Eliminado!',
-                    'Usuario Eliminado correctamente',
+                    'Liga Eliminada correctamente',
                     'success'
                     ).then(function () {
                 window.location.href = "ControladorAdminLiga?liga=" + (liga);
@@ -64,7 +64,7 @@ function eliminarEquipo(equipo) {
         if (result.value) {
             Swal.fire(
                     '¡Eliminado!',
-                    'Usuario Eliminado correctamente',
+                    'Equipo Eliminado correctamente',
                     'success'
                     ).then(function () {
                 window.location.href = "ControladorAdminEquipo?equipo=" + (equipo);
